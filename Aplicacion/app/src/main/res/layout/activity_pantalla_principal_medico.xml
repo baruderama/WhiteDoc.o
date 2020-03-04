@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logowhitedoc" />
+        app:srcCompat="@drawable/logoWhiteDoc" />
 
     <Button
         android:id="@+id/button14"
@@ -25,8 +25,7 @@
         android:text="Perfil"
         app:layout_constraintEnd_toEndOf="@+id/button15"
         app:layout_constraintStart_toStartOf="@+id/button15"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        android:onClick="perfilMedico"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <Button
         android:id="@+id/button15"
@@ -36,8 +35,7 @@
         android:text="Agendar citas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button14"
-        android:onClick="perfilPaciente"/>
+        app:layout_constraintTop_toBottomOf="@+id/button14" />
 
     <Button
         android:id="@+id/button16"
@@ -47,6 +45,5 @@
         android:text="Calendario"
         app:layout_constraintEnd_toEndOf="@+id/button15"
         app:layout_constraintStart_toStartOf="@+id/button15"
-        app:layout_constraintTop_toBottomOf="@+id/button15"
-        android:onClick="pantallaCalendario"/>
+        app:layout_constraintTop_toBottomOf="@+id/button15" />
 </androidx.constraintlayout.widget.ConstraintLayout>

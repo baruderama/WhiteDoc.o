@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/logowhitedoc" />
+        tools:srcCompat="@drawable/logoWhiteDoc" />
 
     <TextView
         android:id="@+id/textView7"
@@ -90,6 +90,5 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2"
-        android:onClick="pantallaPrincipal"/>
+        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
