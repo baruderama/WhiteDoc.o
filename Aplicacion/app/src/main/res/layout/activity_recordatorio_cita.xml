@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Cantidad de Medicamento"
+        android:hint=""
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="@+id/editText8"
         app:layout_constraintHorizontal_bias="0.0"

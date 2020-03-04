@@ -23,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import e.asus.whitedoc.PantallaPrincipalMedico;
 import e.asus.whitedoc.PantallaPrincipalUsuario;
 import e.asus.whitedoc.R;
 import e.asus.whitedoc.Registro;
@@ -117,12 +118,16 @@ public class LoginActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+
+                    Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
+                    startActivity(pantallaPrincipal);
+
             }
         });
         registrarseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registrarseActivity = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
+                Intent registrarseActivity = new Intent(getApplicationContext(), Registro.class);
                 startActivity(registrarseActivity);
             }
         });
