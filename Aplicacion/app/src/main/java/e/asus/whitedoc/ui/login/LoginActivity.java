@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -22,9 +23,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import e.asus.whitedoc.PantallaPrincipalMedico;
+import e.asus.whitedoc.PantallaPrincipalUsuario;
 import e.asus.whitedoc.R;
-import e.asus.whitedoc.ui.login.LoginViewModel;
-import e.asus.whitedoc.ui.login.LoginViewModelFactory;
+import e.asus.whitedoc.Registro;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -39,7 +41,8 @@ public class LoginActivity extends AppCompatActivity {
 
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
-        final Button loginButton = findViewById(R.id.login);
+        final Button loginButton = findViewById(R.id.btnLogin);
+        final Button registrarseButton = findViewById(R.id.btnRegistrarse);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -115,6 +118,17 @@ public class LoginActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+
+                    Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
+                    startActivity(pantallaPrincipal);
+
+            }
+        });
+        registrarseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registrarseActivity = new Intent(getApplicationContext(), Registro.class);
+                startActivity(registrarseActivity);
             }
         });
     }
