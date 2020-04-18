@@ -7,10 +7,10 @@
     tools:context=".DetallePaciente">
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/imgViewDetPac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,11 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="40dp"
-        android:text="Nombre"
-        android:textSize="18sp"
+        android:layout_marginTop="64dp"
+        android:text="@string/txt_nombre"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toBottomOf="@+id/imgViewDetPac" />
 
     <TextView
         android:id="@+id/textView13"
@@ -38,11 +38,11 @@
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="@+id/textView12"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
-        android:text="Edad"
-        android:textSize="18sp"
+        android:text="@string/txt_edad"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/textView12"
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -57,11 +57,11 @@
 
     <TextView
         android:id="@+id/textView19"
-        android:layout_width="@+id/textView14"
-        android:layout_height="26dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="27dp"
-        android:text="Cita"
-        android:textSize="18sp"
+        android:text="@string/txt_cita"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/textView14"
         app:layout_constraintStart_toStartOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
@@ -71,20 +71,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.357"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView19" />
 
     <Button
         android:id="@+id/button13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
-        android:layout_marginEnd="108dp"
         android:onClick="agregarRecordatorio"
         android:text="Agregar recordatorio"
+        android:textColor="@color/colorTitles"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        app:layout_constraintVertical_bias="0.296" />
 </androidx.constraintlayout.widget.ConstraintLayout>

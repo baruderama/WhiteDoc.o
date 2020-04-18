@@ -10,7 +10,7 @@
         android:id="@+id/calendarView2"
         android:layout_width="352dp"
         android:layout_height="318dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,11 +20,11 @@
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         android:text="Guardar Disponibilidad"
+        android:textColor="@color/colorTitles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView2"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

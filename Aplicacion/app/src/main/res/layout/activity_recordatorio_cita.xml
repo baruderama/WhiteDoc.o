@@ -6,49 +6,69 @@
     android:layout_height="match_parent"
     tools:context=".RecordatorioCita">
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="281dp"
-        android:layout_height="233dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/editText8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="44dp"
         android:ems="10"
-        android:hint="Hora"
+        android:hint="@string/txt_fecha"
         android:inputType="time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toTopOf="@+id/button19" />
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="@+id/editText8"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="68dp"
         android:text="Agregar Recordatorio"
-        app:layout_constraintEnd_toEndOf="@+id/editText9"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/editText9"
-        app:layout_constraintStart_toStartOf="@+id/editText8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText9" />
 
     <EditText
         android:id="@+id/editText9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint=""
+        android:hint="@string/txt_hora"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="@+id/editText8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editText8"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toTopOf="@+id/button20" />
+
+    <Button
+        android:id="@+id/button19"
+        android:layout_width="106dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="75dp"
+        android:text="@string/txt_select_fecha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView21" />
+
+    <Button
+        android:id="@+id/button20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/txt_select_hora"
+        app:layout_constraintEnd_toEndOf="@+id/button19"
+        app:layout_constraintStart_toStartOf="@+id/button19"
+        app:layout_constraintTop_toBottomOf="@+id/button19" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="@string/txt_recordatorio"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Aplicacion-WhiteDoc.iml" filepath="$PROJECT_DIR$/Aplicacion-WhiteDoc.iml" group="WhiteDoc" />
+      <module fileurl="file://$PROJECT_DIR$/app/Aplicacion-app.iml" filepath="$PROJECT_DIR$/app/Aplicacion-app.iml" group="WhiteDoc/app" />
       <module fileurl="file://$PROJECT_DIR$/WhiteDoc.iml" filepath="$PROJECT_DIR$/WhiteDoc.iml" group="WhiteDoc" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="WhiteDoc/app" />
     </modules>

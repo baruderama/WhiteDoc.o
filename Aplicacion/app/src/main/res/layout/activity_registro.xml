@@ -24,7 +24,7 @@
         android:layout_marginTop="44dp"
         android:text="¿Cómo te llamas?"
         android:textAlignment="center"
-        android:textColor="#F44336"
+        android:textColor="@color/colorTitles"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Nombre"
+        android:hint="@string/txt_nombre"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,10 +51,10 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Apellido"
+        android:hint="@string/prompt_email"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editText4"
+        app:layout_constraintStart_toStartOf="@+id/editText4"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
     <Spinner
@@ -71,10 +71,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="@string/password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editText5"
+        app:layout_constraintStart_toStartOf="@+id/editText5"
         app:layout_constraintTop_toBottomOf="@+id/editText5" />
 
     <Button
@@ -83,13 +83,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
         android:backgroundTint="#009C27B0"
+        android:onClick="pantallaPrincipal"
         android:text="Registrarse"
         android:textAlignment="center"
-        android:textColor="#F44336"
+        android:textColor="@color/colorTitles"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2"
-        android:onClick="pantallaPrincipal"/>
+        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
