@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "159156548080",
+    "firebase_url": "https://whitedoc-a7023.firebaseio.com",
+    "project_id": "whitedoc-a7023",
+    "storage_bucket": "whitedoc-a7023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159156548080:android:dd69aa27ee389e86242d35",
+        "android_client_info": {
+          "package_name": "e.asus.whitedoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159156548080-8fbaobhgeqnkqpn7dcvcg1fmkfs1k6he.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "e.asus.whitedoc",
+            "certificate_hash": "d85d454e3c8ebe6d9438aa5c4a4f6d71f0cabd26"
+          }
+        },
+        {
+          "client_id": "159156548080-o642fbpr1jrvf8fir0m3jp4unf338p8n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuQvOAhMDbPMEWh7Ahx7LHFxtMIisj0t8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159156548080-o642fbpr1jrvf8fir0m3jp4unf338p8n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

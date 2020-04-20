@@ -26,7 +26,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -46,10 +51,13 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_27" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-04-18T19:39:17.074Z" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../taller1-valderramaAndroidStudio" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/WhiteDoc" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\Desktop\Universidad\9 semestre\CompuMovil\Proyecto\WhiteDoc\Aplicacion\app" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="e.asus.whitedoc" />
     </key>
@@ -58,6 +66,7 @@
       <recent name="e.asus.whitedoc.ui.login" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\Desktop\Universidad\9 semestre\CompuMovil\Proyecto\WhiteDoc\Aplicacion\app\src\main\res\drawable-v24" />
       <recent name="C:\Users\ASUS\AndroidStudioProjects\Aplicacion\app\src\main\res\drawable" />
     </key>
   </component>
@@ -202,7 +211,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

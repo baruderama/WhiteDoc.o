@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".Registro">
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="251dp"
-        android:layout_height="204dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="194dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/logowhitedoc" />
+        app:srcCompat="@drawable/logowhitedoc" />
 
     <TextView
         android:id="@+id/textView7"
@@ -32,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editTxtRegNom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -45,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/editTxtRegMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -53,43 +54,44 @@
         android:gravity="start|top"
         android:hint="@string/prompt_email"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/editText4"
-        app:layout_constraintStart_toStartOf="@+id/editText4"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintEnd_toEndOf="@+id/editTxtRegNom"
+        app:layout_constraintStart_toStartOf="@+id/editTxtRegNom"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtRegNom" />
 
     <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="409dp"
+        android:id="@+id/spnRegTipo"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintEnd_toEndOf="@+id/editTxtRegPass"
+        app:layout_constraintStart_toStartOf="@+id/editTxtRegPass"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtRegPass" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/editTxtRegPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editText5"
-        app:layout_constraintStart_toStartOf="@+id/editText5"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintEnd_toEndOf="@+id/editTxtRegMail"
+        app:layout_constraintStart_toStartOf="@+id/editTxtRegMail"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtRegMail" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnRegRegistro"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
-        android:backgroundTint="#009C27B0"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/colorTitles"
         android:onClick="pantallaPrincipal"
         android:text="Registrarse"
         android:textAlignment="center"
-        android:textColor="@color/colorTitles"
+        android:textColor="@color/colorLettersBtn"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintEnd_toEndOf="@+id/spnRegTipo"
+        app:layout_constraintStart_toStartOf="@+id/spnRegTipo"
+        app:layout_constraintTop_toBottomOf="@+id/spnRegTipo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
