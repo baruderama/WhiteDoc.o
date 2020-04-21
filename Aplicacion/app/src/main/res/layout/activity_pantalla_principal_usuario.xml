@@ -34,16 +34,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:onClick="solcitarMedico"
+                    android:onClick="programarCita"
                     android:text="@string/btnCitaCliente" />
 
                 <Button
-                    android:id="@+id/btnHistPropio"
+                    android:id="@+id/btnCitasCliente"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:onClick="verSalud"
+                    android:onClick="verCitas"
                     android:text="@string/btnHistorialCliente" />
+
+                <Button
+                    android:id="@+id/btnDoctores"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:onClick="verDoctores"
+                    android:text="@string/btnDoctoresCliente" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -56,17 +64,17 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:onClick="agregarMedicamento"
+                        android:onClick="modificarMedicamentos"
                         android:text="@string/btnMedCliente" />
 
                     <Button
-                        android:id="@+id/btnModUsuario"
+                        android:id="@+id/btnPerfilCliente"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="2.5dp"
                         android:layout_weight="1"
-                        android:onClick="agregarMedicamento"
-                        android:text="@string/btnModPerfilCliente" />
+                        android:onClick="verPerfil"
+                        android:text="@string/btnPerfilCliente" />
 
                 </LinearLayout>
 
@@ -76,7 +84,7 @@
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="7"
-                    android:onClick="agregarMedicamento"
+                    android:onClick="emergencia"
                     android:text="@string/btnEmergencia" />
 
             </LinearLayout>
