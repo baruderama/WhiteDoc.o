@@ -32,6 +32,7 @@
     <string name="btn_pntPrincipalMedico_Horario">Horario de Atención</string>
     <string name="btn_pntPrincipalMedico_Pacientes">Pacientes</string>
     <string name="btn_pntPrincipalMedico_Perfil">Perfil</string>
+    <string name="btn_pntPrincipalMedico_Logout">Salir de la sesion</string>
     <string name="contextDescripLogo">Logo de la aplicación</string>
     <string name="txtComoTeLLamas">¿Cómo te llamas?</string>
 

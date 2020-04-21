@@ -38,7 +38,7 @@
                 android:id="@+id/btnSignOutCliente"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="right"
+                android:contentDescription="@string/btn_pntPrincipalMedico_Logout"
                 android:onClick="signOut"
                 android:scaleType="centerCrop"
                 android:src="@drawable/flecha"
@@ -72,38 +72,48 @@
                 android:id="@+id/btn_citasProgramadas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="88dp"
+                android:layout_marginTop="44dp"
                 android:onClick="actividadCitasProgramadas"
                 android:text="@string/btn_pntPrincipalMedico_CitasAsig"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_logoPntMedicoPrinc" />
 
-            <Button
-                android:id="@+id/btn_pntPrincMedicHorario"
-                android:layout_width="200dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="1dp"
-                android:onClick="actividadHorarioAtencion"
-                android:text="@string/btn_pntPrincipalMedico_Horario"
-                app:layout_constraintEnd_toStartOf="@+id/btn_pntPrincMedicPerfil"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_pntPrincMedicPacientes" />
-
-            <Button
-                android:id="@+id/btn_pntPrincMedicPerfil"
-                android:layout_width="205dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="16dp"
-                android:onClick="actividadPerfilMedico"
-                android:text="@string/btn_pntPrincipalMedico_Perfil"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btn_pntPrincMedicHorario"
-                app:layout_constraintTop_toBottomOf="@+id/btn_pntPrincMedicPacientes" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_pntPrincMedicPacientes">
+
+                <Button
+                    android:id="@+id/btn_pntPrincMedicHorario"
+                    style="@style/TextAppearance.AppCompat.Widget.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_weight="0.5"
+                    android:onClick="actividadHorarioAtencion"
+                    android:text="@string/btn_pntPrincipalMedico_Horario"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/btn_pntPrincMedicPerfil"
+                    style="@style/TextAppearance.AppCompat.Widget.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5"
+                    android:onClick="actividadPerfilMedico"
+                    android:text="@string/btn_pntPrincipalMedico_Perfil"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
