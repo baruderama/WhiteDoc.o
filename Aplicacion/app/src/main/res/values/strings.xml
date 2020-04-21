@@ -17,6 +17,9 @@
     <string name="invalid_username">Invalid username</string>
     <string name="invalid_password">La contraseña debe tener al menos 5 caracteres</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="btnCitaCliente">Pedir cita médica</string>
+    <string name="btnHistorialCliente">Historial médico</string>
+    <string name="btnMedCliente">Gestionar Medicamentos</string>
     <string-array name="spinner_registro">
         <item>Paciente</item>
         <item>Médico</item>

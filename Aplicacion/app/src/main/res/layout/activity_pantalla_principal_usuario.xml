@@ -7,49 +7,60 @@
     tools:context=".PantallaPrincipalUsuario">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/logoPrincipalCliente"
         android:layout_width="219dp"
         android:layout_height="154dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logowhitedoc" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnCitaMedica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="Solicitar Médico"
+        android:onClick="solcitarMedico"
+        android:text="@string/btnCitaCliente"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        android:onClick="solcitarMedico"/>
+        app:layout_constraintTop_toBottomOf="@+id/logoPrincipalCliente" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="@+id/button3"
+        android:id="@+id/btnHistPropio"
+        android:layout_width="@+id/btnCitaMedica"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="Ver Salud"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        android:onClick="verSalud"/>
+        android:layout_marginTop="64dp"
+        android:onClick="verSalud"
+        android:text="@string/btnHistorialCliente"
+        app:layout_constraintEnd_toEndOf="@+id/btnCitaMedica"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btnCitaMedica"
+        app:layout_constraintTop_toBottomOf="@+id/btnCitaMedica" />
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="@+id/button3"
+        android:id="@+id/btnMedPropio"
+        android:layout_width="@+id/btnCitaMedica"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:text="Gestionar Medicamentos"
-        app:layout_constraintEnd_toEndOf="@+id/button4"
+        android:text="@string/btnMedCliente"
+        app:layout_constraintEnd_toEndOf="@+id/btnHistPropio"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintStart_toStartOf="@+id/btnHistPropio"
+        app:layout_constraintTop_toBottomOf="@+id/btnHistPropio"
+        android:onClick="agregarMedicamento"/>
+
+    <Button
+        android:id="@+id/btnEmergenciaPropia"
+        android:layout_width="@+id/btnCitaMedica"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="EMERGENCIA"
+        app:layout_constraintEnd_toEndOf="@+id/btnMedPropio"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btnMedPropio"
+        app:layout_constraintTop_toBottomOf="@+id/btnMedPropio"
         android:onClick="agregarMedicamento"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
