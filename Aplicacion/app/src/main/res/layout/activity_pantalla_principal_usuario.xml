@@ -20,8 +20,10 @@
             android:orientation="vertical">
 
             <FrameLayout
+                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="0dp"
+                android:minHeight="100dp"
                 android:layout_gravity="center_horizontal">
 
                 <ImageView
@@ -43,14 +45,15 @@
             </FrameLayout>
 
             <LinearLayout
+                android:layout_weight="5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:orientation="vertical">
 
                 <Button
                     android:id="@+id/btnCitaMedica"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:onClick="programarCita"
                     android:text="@string/btnCitaCliente" />
@@ -58,7 +61,7 @@
                 <Button
                     android:id="@+id/btnCitasCliente"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:onClick="verCitas"
                     android:text="@string/btnHistorialCliente" />
@@ -66,21 +69,21 @@
                 <Button
                     android:id="@+id/btnDoctores"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:onClick="verDoctores"
                     android:text="@string/btnDoctoresCliente" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btnMedPropio"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:onClick="modificarMedicamentos"
                         android:text="@string/btnMedCliente" />
@@ -88,7 +91,7 @@
                     <Button
                         android:id="@+id/btnPerfilCliente"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:onClick="verPerfil"
                         android:text="@string/btnPerfilCliente" />
@@ -96,12 +99,15 @@
                 </LinearLayout>
 
                 <Button
+                    android:textFontWeight="7"
                     android:id="@+id/btnEmergenciaPropia"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="0dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="7"
                     android:onClick="emergencia"
+                    android:backgroundTint="@color/colorTitles"
+                    android:textColor="@color/colorLettersBtn"
                     android:text="@string/btnEmergencia" />
 
             </LinearLayout>
