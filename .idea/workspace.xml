@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b733f9f-fb79-4f4b-9cdb-a36b1534ba88" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/drawable-anydpi/ic_action_name.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/drawable-hdpi/ic_action_name.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/drawable-mdpi/ic_action_name.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/drawable-xxhdpi/ic_action_name.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Aplicacion/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ui/login/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ui/login/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/Adapter/UserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/Adapter/UserAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/Fragments/ChatsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/Fragments/ChatsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/MessageActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/MessageActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/activity_chat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/activity_chat.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/bar_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/bar_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/activity_message.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/activity_message.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/fragment_chats.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/fragment_chats.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -105,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587450849509</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="lista de usuarios de la app+ pantalla de lista de chats">
+      <created>1587467199720</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587467199720</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,6 +133,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="rama chat" />
     <MESSAGE value="prueba2" />
-    <option name="LAST_COMMIT_MESSAGE" value="prueba2" />
+    <MESSAGE value="lista de usuarios de la app+ pantalla de lista de chats" />
+    <option name="LAST_COMMIT_MESSAGE" value="lista de usuarios de la app+ pantalla de lista de chats" />
   </component>
 </project>

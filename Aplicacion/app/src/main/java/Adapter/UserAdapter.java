@@ -1,6 +1,7 @@
 package Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import e.asus.whitedoc.MessageActivity;
 import e.asus.whitedoc.R;
 import model.User;
 
@@ -32,11 +34,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        User user=mUser.get(position);
+        final User user=mUser.get(position);
         holder.username.setText(user.getName());
 
         holder.profile_image.setImageResource(R.mipmap.ic_launcher);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(mContext, MessageActivity.class);
+                intent.putExtra("userEmail",user.getEmail());
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
