@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class PantallaPrincipalUsuario extends AppCompatActivity {
 
     @Override
@@ -46,5 +48,12 @@ public class PantallaPrincipalUsuario extends AppCompatActivity {
         Toast.makeText(this, "Pantalla no implementada (Derivado de Lista de Chats)", Toast.LENGTH_SHORT).show();
         // Intent pantallaAgregar = new Intent(getApplicationContext(), ModificarMedicamentos.class);
         // startActivity(pantallaAgregar);
+    }
+
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
+        Intent pantallaLogIn = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(pantallaLogIn);
+        finish();
     }
 }

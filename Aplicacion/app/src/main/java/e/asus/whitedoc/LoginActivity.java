@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,6 +64,18 @@ public class LoginActivity extends AppCompatActivity {
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         mAuth = FirebaseAuth.getInstance();
+
+        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user == null) {
+                    // User is signed out
+
+                }
+            }
+        });
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,10 +103,10 @@ public class LoginActivity extends AppCompatActivity {
         Pattern pattern = Pattern
                 .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-        Matcher mather = pattern.matcher(usuario);
+        Matcher matcher = pattern.matcher(usuario);
         if(!usuario.isEmpty() && !password.isEmpty())
         {
-            if (!mather.find()) {
+            if (!matcher.find()) {
                 Toast.makeText(getApplicationContext(), "Usuario incorrecto", Toast.LENGTH_SHORT).show();
             }
             else{
@@ -114,12 +127,14 @@ public class LoginActivity extends AppCompatActivity {
                                             if(dataSnapshot.child("type").getValue().toString().equals("Médico")){
                                                 Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalMedico.class);
                                                 startActivity(pantallaPrincipal);
+                                                finish();
                                             }
                                             else
                                             {
                                                 if(dataSnapshot.child("type").getValue().toString().equals("Paciente")){
                                                     Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
                                                     startActivity(pantallaPrincipal);
+                                                    finish();
                                                 }
                                             }
                                         }

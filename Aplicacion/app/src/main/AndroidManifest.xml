@@ -9,28 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AboutUs"></activity>
-        <activity android:name=".DetallePaciente" />
+        <activity
+            android:name=".PantallaCarga"
+            android:label="@string/app_name">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AboutUs" />
+        <activity android:name=".PerfilPaciente" />
         <activity android:name=".Chat" />
         <activity android:name=".PantallaPrincipalMedico" />
         <activity android:name=".DisponibilidadMedico" />
         <activity android:name=".HistorialMedicosXPaciente" />
         <activity android:name=".RecordatorioCita" />
         <activity android:name=".DetalleMedico" />
-        <activity android:name=".BusquedaMedico" />
+        <activity android:name=".ProgramarCita" />
         <activity android:name=".PantallaPrincipalUsuario" />
         <activity android:name=".Registro" />
-        <activity android:name=".DetallePersona" />
-        <activity android:name=".AgregarMedicamento" />
+        <activity android:name=".ConsultarCitasPersona" />
+        <activity android:name=".ModificarMedicamentos" />
         <activity android:name=".GestionMedicamentos" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
