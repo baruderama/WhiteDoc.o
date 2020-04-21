@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
 
-                    Intent pantallaPrincipal = new Intent(getApplicationContext(), Chat.class);
+                    Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
                     startActivity(pantallaPrincipal);
 
             }
