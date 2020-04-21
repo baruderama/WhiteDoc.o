@@ -11,12 +11,12 @@
         android:id="@+id/imageView3"
         android:layout_width="194dp"
         android:layout_height="122dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/indice" />
+        app:srcCompat="@drawable/logowhitedoc" />
 
     <TextView
         android:id="@+id/textView7"

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class PantallaPrincipalMedico extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,5 +41,12 @@ public class PantallaPrincipalMedico extends AppCompatActivity {
     public void actividadHorarioAtencion(View v) {
         Intent pantallaHorarioAtencion = new Intent(getApplicationContext(), DisponibilidadMedico.class);
         startActivity(pantallaHorarioAtencion);
+    }
+
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
+        Intent pantallaLogIn = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(pantallaLogIn);
+        finish();
     }
 }
