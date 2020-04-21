@@ -3,6 +3,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="txt_nombre">Nombre</string>
+    <string name="txt_usuario">Usuario</string>
     <string name="txt_edad">Edad</string>
     <string name="txt_cita">Cita</string>
     <string name="txt_fecha">Fecha</string>
@@ -17,6 +18,24 @@
     <string name="invalid_username">Invalid username</string>
     <string name="invalid_password">La contraseña debe tener al menos 5 caracteres</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="btnIniciarSesion">Iniciar Sesión</string>
+    <string name="btnRegistrarse">Registrarse</string>
+    <string name="txtNoRegistrado">¿No estás registrado?</string>
+    <string name="btnCitaCliente">Pedir cita médica</string>
+    <string name="btnHistorialCliente">Ver citas</string>
+    <string name="btnMedCliente">Medicamentos</string>
+    <string name="btnPerfilCliente">Ver perfil</string>
+    <string name="btnEmergencia">EMERGENCIA</string>
+    <string name="btnDoctoresCliente">Doctores</string>
+    <string name="btn_pntPrincipalMedico_CitasAsig">Citas Programadas</string>
+    <string name="btn_pntPrincipalMedico_CitasXAcep">Aceptar Citas</string>
+    <string name="btn_pntPrincipalMedico_Horario">Horario de Atención</string>
+    <string name="btn_pntPrincipalMedico_Pacientes">Pacientes</string>
+    <string name="btn_pntPrincipalMedico_Perfil">Perfil</string>
+    <string name="btn_pntPrincipalMedico_Logout">Salir de la sesion</string>
+    <string name="contextDescripLogo">Logo de la aplicación</string>
+    <string name="txtComoTeLLamas">¿Cómo te llamas?</string>
+
     <string-array name="spinner_registro">
         <item>Paciente</item>
         <item>Médico</item>

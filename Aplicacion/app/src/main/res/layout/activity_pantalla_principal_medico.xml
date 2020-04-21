@@ -4,49 +4,119 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="7.5dp"
+    android:layout_marginRight="7.5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     tools:context=".PantallaPrincipalMedico">
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="197dp"
-        android:layout_height="154dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logowhitedoc" />
-
-    <Button
-        android:id="@+id/button14"
-        android:layout_width="@+id/button15"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:text="Perfil"
-        app:layout_constraintEnd_toEndOf="@+id/button15"
-        app:layout_constraintStart_toStartOf="@+id/button15"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        android:onClick="perfilMedico"/>
-
-    <Button
-        android:id="@+id/button15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="Agendar citas"
+    <ScrollView
+        android:id="@+id/scroll_pntMedicoPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button14"
-        android:onClick="perfilPaciente"/>
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/button16"
-        android:layout_width="@+id/button15"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="Calendario"
-        app:layout_constraintEnd_toEndOf="@+id/button15"
-        app:layout_constraintStart_toStartOf="@+id/button15"
-        app:layout_constraintTop_toBottomOf="@+id/button15"
-        android:onClick="pantallaCalendario"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_logoPntMedicoPrinc"
+                android:layout_width="197dp"
+                android:layout_height="170dp"
+                android:layout_marginTop="68dp"
+                android:contentDescription="@string/contextDescripLogo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logowhitedoc" />
+
+            <ImageButton
+                android:id="@+id/btnSignOutCliente"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/btn_pntPrincipalMedico_Logout"
+                android:onClick="signOut"
+                android:scaleType="centerCrop"
+                android:src="@drawable/flecha"
+                android:text="@string/btnCitaCliente"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_aceptarCitas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/btn_pntPrincipalMedico_CitasXAcep"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_citasProgramadas"
+                android:onClick="actividadAceptarCitas"/>
+
+            <Button
+                android:id="@+id/btn_pntPrincMedicPacientes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/btn_pntPrincipalMedico_Pacientes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_aceptarCitas"
+                android:onClick="actividadPacientes"/>
+
+            <Button
+                android:id="@+id/btn_citasProgramadas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:onClick="actividadCitasProgramadas"
+                android:text="@string/btn_pntPrincipalMedico_CitasAsig"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_logoPntMedicoPrinc" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_pntPrincMedicPacientes">
+
+                <Button
+                    android:id="@+id/btn_pntPrincMedicHorario"
+                    style="@style/TextAppearance.AppCompat.Widget.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_weight="0.5"
+                    android:onClick="actividadHorarioAtencion"
+                    android:text="@string/btn_pntPrincipalMedico_Horario"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/btn_pntPrincMedicPerfil"
+                    style="@style/TextAppearance.AppCompat.Widget.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.5"
+                    android:onClick="actividadPerfilMedico"
+                    android:text="@string/btn_pntPrincipalMedico_Perfil"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,115 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".Registro">
-
-    <ScrollView
+    android:fillViewport="true"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:background="#FFFFFF"
+        tools:context=".Registro">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="194dp"
+            android:layout_height="122dp"
+            android:layout_marginTop="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logowhitedoc" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:animationCache="false"
-            android:background="#FFFFFF"
-            android:orientation="vertical">
+            android:layout_marginTop="44dp"
+            android:text="@string/txtComoTeLLamas"
+            android:textAlignment="center"
+            android:textColor="@color/colorTitles"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="292dp"
-                android:layout_height="152dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logowhitedoc" />
+        <EditText
+            android:id="@+id/editTxtRegNom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/txt_nombre"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="¿Cómo te llamas?"
-                android:textAlignment="center"
-                android:textColor="@color/colorTitles"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        <EditText
+            android:id="@+id/editTxtRegMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/prompt_email"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="@+id/editTxtRegNom"
+            app:layout_constraintStart_toStartOf="@+id/editTxtRegNom"
+            app:layout_constraintTop_toBottomOf="@+id/editTxtRegNom" />
 
-            <EditText
-                android:id="@+id/editTxtRegNom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="34dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/txt_nombre"
-                android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        <Spinner
+            android:id="@+id/spnRegTipo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/editTxtRegPass"
+            app:layout_constraintStart_toStartOf="@+id/editTxtRegPass"
+            app:layout_constraintTop_toBottomOf="@+id/editTxtRegPass" />
 
-            <EditText
-                android:id="@+id/editTxtRegMail"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/prompt_email"
-                android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="@+id/editTxtRegNom"
-                app:layout_constraintStart_toStartOf="@+id/editTxtRegNom"
-                app:layout_constraintTop_toBottomOf="@+id/editTxtRegNom" />
+        <EditText
+            android:id="@+id/editTxtRegPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="@+id/editTxtRegMail"
+            app:layout_constraintStart_toStartOf="@+id/editTxtRegMail"
+            app:layout_constraintTop_toBottomOf="@+id/editTxtRegMail" />
 
-            <EditText
-                android:id="@+id/editTxtRegPass"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:ems="10"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="@+id/editTxtRegMail"
-                app:layout_constraintStart_toStartOf="@+id/editTxtRegMail"
-                app:layout_constraintTop_toBottomOf="@+id/editTxtRegMail" />
-
-            <Spinner
-                android:id="@+id/spnRegTipo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/editTxtRegPass"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="@+id/editTxtRegPass"
-                app:layout_constraintTop_toBottomOf="@+id/editTxtRegPass" />
-
-            <Button
-                android:id="@+id/btnRegRegistro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:backgroundTint="@color/colorTitles"
-                android:onClick="pantallaPrincipal"
-                android:text="Registrarse"
-                android:textAlignment="center"
-                android:textColor="@color/colorLettersBtn"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/spnRegTipo"
-                app:layout_constraintStart_toStartOf="@+id/spnRegTipo"
-                app:layout_constraintTop_toBottomOf="@+id/spnRegTipo" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnRegRegistro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="@color/colorTitles"
+            android:onClick="pantallaPrincipal"
+            android:text="@string/btnRegistrarse"
+            android:textAlignment="center"
+            android:textColor="@color/colorLettersBtn"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/spnRegTipo"
+            app:layout_constraintStart_toStartOf="@+id/spnRegTipo"
+            app:layout_constraintTop_toBottomOf="@+id/spnRegTipo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
