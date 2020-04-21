@@ -23,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import e.asus.whitedoc.Chat;
 import e.asus.whitedoc.PantallaPrincipalMedico;
 import e.asus.whitedoc.PantallaPrincipalUsuario;
 import e.asus.whitedoc.R;
@@ -119,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
 
-                    Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
+                    Intent pantallaPrincipal = new Intent(getApplicationContext(), Chat.class);
                     startActivity(pantallaPrincipal);
 
             }

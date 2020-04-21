@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b733f9f-fb79-4f4b-9cdb-a36b1534ba88" name="Default Changelist" comment="rama chat">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="0b733f9f-fb79-4f4b-9cdb-a36b1534ba88" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ui/login/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ui/login/LoginActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/activity_chat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/activity_chat.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/bar_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/layout/bar_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587447912966</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="prueba2">
+      <created>1587450849509</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587450849509</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -124,6 +121,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="rama chat" />
-    <option name="LAST_COMMIT_MESSAGE" value="rama chat" />
+    <MESSAGE value="prueba2" />
+    <option name="LAST_COMMIT_MESSAGE" value="prueba2" />
   </component>
 </project>
