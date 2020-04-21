@@ -18,6 +18,9 @@
     <string name="invalid_username">Invalid username</string>
     <string name="invalid_password">La contraseña debe tener al menos 5 caracteres</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="btnIniciarSesion">Iniciar Sesión</string>
+    <string name="btnRegistrarse">Registrarse</string>
+    <string name="txtNoRegistrado">¿No estás registrado?</string>
     <string-array name="spinner_registro">
         <item>Paciente</item>
         <item>Médico</item>
