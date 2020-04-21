@@ -3,6 +3,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="txt_nombre">Nombre</string>
+    <string name="txt_usuario">Usuario</string>
     <string name="txt_edad">Edad</string>
     <string name="txt_cita">Cita</string>
     <string name="txt_fecha">Fecha</string>
