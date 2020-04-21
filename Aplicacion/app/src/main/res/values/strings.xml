@@ -20,6 +20,8 @@
     <string name="btnCitaCliente">Pedir cita médica</string>
     <string name="btnHistorialCliente">Historial médico</string>
     <string name="btnMedCliente">Gestionar Medicamentos</string>
+    <string name="btnModPerfilCliente">Modificar perfil</string>
+    <string name="btnEmergencia">EMERGENCIA</string>
     <string-array name="spinner_registro">
         <item>Paciente</item>
         <item>Médico</item>
