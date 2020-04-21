@@ -17,6 +17,13 @@
     <string name="invalid_username">Invalid username</string>
     <string name="invalid_password">La contraseña debe tener al menos 5 caracteres</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="btn_pntPrincipalMedico_CitasAsig">Citas Progrmadas</string>
+    <string name="btn_pntPrincipalMedico_CitasXAcep">Aceptar Citas</string>
+    <string name="btn_pntPrincipalMedico_Horario">Horario de Atención</string>
+    <string name="btn_pntPrincipalMedico_Pacientes">Pacientes</string>
+    <string name="btn_pntPrincipalMedico_Perfil">Perfil</string>
+    <string name="contextDescripLogo">Logo de la aplicación</string>
+
     <string-array name="spinner_registro">
         <item>Paciente</item>
         <item>Médico</item>

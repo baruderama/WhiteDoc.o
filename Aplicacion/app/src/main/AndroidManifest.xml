@@ -16,7 +16,7 @@
         <activity android:name=".DisponibilidadMedico" />
         <activity android:name=".HistorialMedicosXPaciente" />
         <activity android:name=".RecordatorioCita" />
-        <activity android:name=".DetalleMedico" />
+        <activity android:name=".PerfilMedico" />
         <activity android:name=".BusquedaMedico" />
         <activity android:name=".PantallaPrincipalUsuario" />
         <activity android:name=".Registro" />

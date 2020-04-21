@@ -15,7 +15,7 @@ public class HistorialMedicosXPaciente extends AppCompatActivity {
     }
 
     public void medico(View v) {
-        Intent pantallaMedico = new Intent(getApplicationContext(), DetalleMedico.class);
+        Intent pantallaMedico = new Intent(getApplicationContext(), PerfilMedico.class);
         startActivity(pantallaMedico);
     }
 }
