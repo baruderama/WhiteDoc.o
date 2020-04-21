@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="263dp"
         android:layout_height="203dp"
-        android:src="@drawable/logowhitedoc"
+        android:src="@drawable/logowhitedoc_transparente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

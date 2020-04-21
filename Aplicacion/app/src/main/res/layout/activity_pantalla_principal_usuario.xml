@@ -30,7 +30,7 @@
                     android:id="@+id/logoPrincipalCliente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/logowhitedoc" />
+                    app:srcCompat="@drawable/logowhitedoc_transparente" />
 
                 <ImageButton
                     android:id="@+id/btnSignOutCliente"
