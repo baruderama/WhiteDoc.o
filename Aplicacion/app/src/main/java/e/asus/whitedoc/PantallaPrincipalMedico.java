@@ -20,12 +20,12 @@ public class PantallaPrincipalMedico extends AppCompatActivity {
     }
 
     public void perfilMedico(View v) {
-        Intent pantallaperfil = new Intent(getApplicationContext(), DetallePersona.class);
+        Intent pantallaperfil = new Intent(getApplicationContext(), ConsultarCitasPersona.class);
         startActivity(pantallaperfil);
     }
 
     public void perfilPaciente(View v) {
-        Intent pantallaPaciente = new Intent(getApplicationContext(), DetallePaciente.class);
+        Intent pantallaPaciente = new Intent(getApplicationContext(), PerfilPaciente.class);
         startActivity(pantallaPaciente);
     }
 }

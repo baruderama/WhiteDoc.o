@@ -21,6 +21,12 @@
     <string name="btnIniciarSesion">Iniciar Sesión</string>
     <string name="btnRegistrarse">Registrarse</string>
     <string name="txtNoRegistrado">¿No estás registrado?</string>
+    <string name="btnCitaCliente">Pedir cita médica</string>
+    <string name="btnHistorialCliente">Ver citas</string>
+    <string name="btnMedCliente">Medicamentos</string>
+    <string name="btnPerfilCliente">Ver perfil</string>
+    <string name="btnEmergencia">EMERGENCIA</string>
+    <string name="btnDoctoresCliente">Doctores</string>
     <string-array name="spinner_registro">
         <item>Paciente</item>
         <item>Médico</item>

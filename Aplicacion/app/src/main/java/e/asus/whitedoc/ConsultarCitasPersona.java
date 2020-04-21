@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class DetallePersona extends AppCompatActivity {
+public class ConsultarCitasPersona extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
