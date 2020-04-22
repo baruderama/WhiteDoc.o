@@ -21,12 +21,20 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 
 public class PerfilMedico extends AppCompatActivity {
+    private DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Users");
     private ImageView imgFotoPerfilMedico;
     private Button guardarCambios;
     private EditText nombreMedico;
@@ -63,6 +71,7 @@ public class PerfilMedico extends AppCompatActivity {
         this.nombreMedico.setEnabled(false);
         this.fechaNacMedico.setEnabled(false);
         this.especialidadMedico.setEnabled(false);
+
         Toast.makeText(this, "Falta implementar ", Toast.LENGTH_SHORT).show();
     }
     public void cambiarFotoPerfilCamara(View v) {

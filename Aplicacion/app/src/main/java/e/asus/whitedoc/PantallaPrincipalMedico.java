@@ -25,7 +25,6 @@ public class PantallaPrincipalMedico extends AppCompatActivity {
     public void actividadPerfilMedico(View v) {
         Intent pantallaperfil = new Intent(getApplicationContext(), PerfilMedico.class);
         startActivity(pantallaperfil);
-        //Toast.makeText(this, "Aun no hay pantalla perfil de medico", Toast.LENGTH_SHORT).show();
     }
 
     public void actividadPacientes(View v) {
