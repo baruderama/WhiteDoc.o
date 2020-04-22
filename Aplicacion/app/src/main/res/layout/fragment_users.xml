@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E45151"
+    android:background="#ACA3A3"
     tools:context="Fragments.UsersFragment">
 
     <!-- TODO: Update blank fragment layout -->
