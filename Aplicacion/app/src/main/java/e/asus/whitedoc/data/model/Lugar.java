@@ -18,6 +18,12 @@ public class Lugar {
         this.texto = texto;
     }
 
+    public Lugar(String texto) {
+        latitud = null;
+        longitud = null;
+        this.texto = texto;
+    }
+
     public Lugar(double latitud, double longitud, String texto) {
         this.latitud = latitud;
         this.longitud = longitud;

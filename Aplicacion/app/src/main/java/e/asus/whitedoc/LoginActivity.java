@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Users");
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,10 +119,9 @@ public class LoginActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 Log.i("ENTRA", "hola 2");
                                 String id = mAuth.getCurrentUser().getUid();
-                                mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
+                                mDatabase.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        Log.i("ENTRA", "hola 3" + dataSnapshot.child("type").getValue().toString());
                                         if(dataSnapshot.exists()){
                                             if(dataSnapshot.child("type").getValue().toString().equals("Médico")){
                                                 Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalMedico.class);
@@ -137,6 +136,9 @@ public class LoginActivity extends AppCompatActivity {
                                                     finish();
                                                 }
                                             }
+                                        }
+                                        else {
+                                            Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT).show();
                                         }
                                     }
 

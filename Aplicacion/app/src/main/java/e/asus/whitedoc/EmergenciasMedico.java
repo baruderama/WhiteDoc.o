@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -52,6 +53,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -68,16 +70,16 @@ import e.asus.whitedoc.data.model.Lugar;
 import e.asus.whitedoc.helper.FetchURL;
 import e.asus.whitedoc.helper.TaskLoadedCallback;
 
-public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCallback, TaskLoadedCallback {
+public class EmergenciasMedico extends FragmentActivity implements OnMapReadyCallback, TaskLoadedCallback {
 
     private boolean ESTADO_INICIADO;
     private FirebaseUser sesUsuario;
     private Map<String, Object> map;
+    private String atendiendo;
 
     private GoogleMap mMap;
-    private Lugar usuario;
-    private Lugar doctor;
-    private EditText campoBusqueda;
+    private Lugar medico;
+    private Lugar paciente;
     private boolean firstDraw;
     private Float lightLevel;
     private DatabaseReference dbRef;
@@ -114,12 +116,13 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
         sesUsuario = FirebaseAuth.getInstance().getCurrentUser();
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         firstDraw = true;
-        usuario = new Lugar("Usuario");
-        doctor = new Lugar("Doctor");
+        medico = new Lugar("Medico");
+        paciente = new Lugar("Paciente");
         dbRef = FirebaseDatabase.getInstance().getReference();
         map = new HashMap<>();
-        map.put("estado", "buscando");
+        map.put("estado", "libre");
         map.put("asignado", "N/A");
+        atendiendo = "N/A";
         inflar();
 
         requestPermission(this, Manifest.permission.ACCESS_FINE_LOCATION, "Es necesario para acceder a la ubicacion", PERMISSION_LOCATION);
@@ -130,33 +133,33 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
                 android.location.Location location = locationResult.getLastLocation();
                 lastLocation = location;
                 if (location != null) {
-                    usuario.setLatitud(location.getLatitude());
-                    usuario.setLongitud(location.getLongitude());
+                    medico.setLatitud(location.getLatitude());
+                    medico.setLongitud(location.getLongitude());
                     Geocoder mGeocoder = new Geocoder(getBaseContext());
                     try {
-                        usuario.setTexto(mGeocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 2).get(0).getAddressLine(0));
+                        medico.setTexto(mGeocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 2).get(0).getAddressLine(0));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     reCalculateMarkersAndRoute();
                     if (firstDraw && mMap != null) {
-                        mMap.moveCamera(CameraUpdateFactory.newLatLng(usuario.getLatLng()));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(medico.getLatLng()));
                         mMap.moveCamera(CameraUpdateFactory.zoomTo(14));
                         firstDraw = false;
                     }
 
                     if(ESTADO_INICIADO){
-                        map.put("latitud", usuario.getLatitud());
-                        map.put("longitud", usuario.getLongitud());
+                        map.put("latitud", medico.getLatitud());
+                        map.put("longitud", medico.getLongitud());
 
-                        dbRef.child("EstadoEmergencia").child(sesUsuario.getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        dbRef.child("AtendiendoEmergencia").child(sesUsuario.getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task2) {
                                 if(task2.isSuccessful()){
                                 }
                                 else
                                 {
-                                    Toast.makeText(EmergenciaUsuario.this, "No se pudo iniciar la emergencia", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(EmergenciasMedico.this, "Error con la localización", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -173,11 +176,10 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
                 lightLevel = event.values[0];
                 if (mMap != null) {
                     if (lightLevel < DARK_MAP_THRESHOLD) {
-                        Log.i("MAPS", "DARK MAP " + lightLevel);
-                        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(EmergenciaUsuario.this, R.raw.dark_style_map));
+
+                        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(EmergenciasMedico.this, R.raw.dark_style_map));
                     } else {
-                        Log.i("MAPS", "LIGHT MAP " + lightLevel);
-                        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(EmergenciaUsuario.this, R.raw.light_style_map));
+                        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(EmergenciasMedico.this, R.raw.light_style_map));
                     }
                 }
             }
@@ -194,8 +196,8 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
         mapFragment.getMapAsync(this);
 
         dEmpezarEmergencia = new AlertDialog.Builder(this)
-                .setTitle("Creando un llamado de emergencia")
-                .setMessage("Quieres empezar el llamado de emergencia?")
+                .setTitle("BUSCAR EMERGENCIAS")
+                .setMessage("Quieres empezar a buscar emergencias?")
                 .setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -216,7 +218,6 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
             @Override
             public void onShow(final DialogInterface dialog) {
                 final Button defaultButton = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
-                final CharSequence positiveButtonText = defaultButton.getText();
                 new CountDownTimer(AUTO_DISMISS_MILLIS, 100) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -229,7 +230,7 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
                     @Override
                     public void onFinish() {
                         if (((AlertDialog) dialog).isShowing()) {
-                            defaultButton.setText(positiveButtonText);
+                            defaultButton.setText(R.string.empezar);
                             dialog.dismiss();
                             iniciarEmergencia();
                         }
@@ -239,9 +240,9 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
         });
 
         dCancelarEmergencia = new AlertDialog.Builder(this)
-                .setTitle("CANCELAR LLAMADO DE EMERGENCIA")
-                .setMessage("Quieres cancelar el llamado de emergencia?")
-                .setNegativeButton(R.string.cancelarlo, new DialogInterface.OnClickListener() {
+                .setTitle("DEJAR DE BUSCAR EMERGENCIAS")
+                .setMessage("Quieres dejar de buscar emergencias?")
+                .setNegativeButton(R.string.dejar_de_buscar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -287,7 +288,11 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
     private void cancelarEmergencia() {
         if(ESTADO_INICIADO) {
             ESTADO_INICIADO = false;
-            dbRef.child("EstadoEmergencia").child(sesUsuario.getUid()).removeValue();
+            if(!atendiendo.equals("N/A")) {
+                dbRef.child("EstadoEmergencia").child(atendiendo).child("estado").setValue("buscando");
+                dbRef.child("EstadoEmergencia").child(atendiendo).child("asignado").setValue("N/A");
+            }
+            dbRef.child("AtendiendoEmergencia").child(sesUsuario.getUid()).removeValue();
         }
         finish();
     }
@@ -295,43 +300,72 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
     private void iniciarEmergencia() {
         if (!ESTADO_INICIADO) {
             ESTADO_INICIADO = true;
-            Toast.makeText(EmergenciaUsuario.this, "Emergencia iniciada", Toast.LENGTH_LONG).show();
+            Toast.makeText(EmergenciasMedico.this, "Búsqueda de mergencias iniciada", Toast.LENGTH_LONG).show();
 
-            dbRef.child("EstadoEmergencia").child(sesUsuario.getUid()).child("asignado").addValueEventListener(new ValueEventListener() {
+            dbRef.child("EstadoEmergencia").addChildEventListener(new ChildEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getValue() != null) {
-                        if (!dataSnapshot.getValue().toString().equals("N/A")) {
-                            medicoEncontrado(dataSnapshot.getValue().toString());
+                public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                    if(atendiendo.equals("N/A")) {
+                        if(dataSnapshot.child("estado").getValue().equals("buscando")) {
+                            atendiendo = dataSnapshot.getKey();
+                            map.put("estado", "ocupado");
+                            map.put("asignado", "atendiendo");
+
+                            dbRef.child("EstadoEmergencia").child(atendiendo).child("estado").setValue("atendido");
+                            dbRef.child("EstadoEmergencia").child(atendiendo).child("asignado").setValue(sesUsuario.getUid());
+
+                            pacienteEncontrado();
                         }
                     }
                 }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
+                    if(atendiendo.equals("N/A")) {
+                        if(dataSnapshot.child("estado").getValue().equals("buscando")) {
+                            atendiendo = dataSnapshot.getKey();
+                            map.put("estado", "ocupado");
+                            map.put("asignado", "atendiendo");
+
+                            dbRef.child("EstadoEmergencia").child(atendiendo).child("estado").setValue("atendido");
+                            dbRef.child("EstadoEmergencia").child(atendiendo).child("asignado").setValue(sesUsuario.getUid());
+
+                            pacienteEncontrado();
+                        }
+                    }
                 }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) { }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) { }
+
             });
         }
     }
 
-    private void medicoEncontrado(String idMedico) {
-        map.put("estado", "atendido");
-        map.put("asignado", idMedico);
-        dbRef.child("AtendiendoEmergencia").child(idMedico).addValueEventListener(new ValueEventListener() {
+    private void pacienteEncontrado() {
+        dbRef.child("EstadoEmergencia").child(atendiendo).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() != null) {
-                    double doctorLatitud = Double.parseDouble(dataSnapshot.child("latitud").getValue().toString());
-                    double doctorLongitud = Double.parseDouble(dataSnapshot.child("longitud").getValue().toString());
-                    doctor.setLatLng(new LatLng(doctorLatitud, doctorLongitud));
+                    double pacienteLatitud = Double.parseDouble(dataSnapshot.child("latitud").getValue().toString());
+                    double pacienteLongitud = Double.parseDouble(dataSnapshot.child("longitud").getValue().toString());
+                    paciente.setLatLng(new LatLng(pacienteLatitud, pacienteLongitud));
                     reCalculateMarkersAndRoute();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                    map.put("estado", "buscando");
-                    map.put("asignado", "N/A");
+                if(!atendiendo.equals("N/A")) {
+                    dbRef.child("AtendiendoEmergencia").child(sesUsuario.getUid()).child("asignado").setValue("N/A");
+                    dbRef.child("AtendiendoEmergencia").child(sesUsuario.getUid()).child("estado").setValue("libre");
+                }
             }
         });
     }
@@ -341,34 +375,36 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
 
     private void showDistance() {
 
-        if (usuario.isEmpty()) {
+        if (medico.isEmpty()) {
             Toast.makeText(this, "No está activada la localización", Toast.LENGTH_LONG).show();
             return;
         }
-        if (doctor.isEmpty()) {
+        if (paciente.isEmpty()) {
             Toast.makeText(this, "ERROR", Toast.LENGTH_LONG).show();
             return;
         }
 
-        Toast.makeText(this, doctor.getTexto() + " está a " + distance(usuario.getLatitud(), usuario.getLongitud(), doctor.getLatitud(), doctor.getLongitud()).toString() + " Km", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, paciente.getTexto() + " está a " + distance(medico.getLatitud(), medico.getLongitud(), paciente.getLatitud(), paciente.getLongitud()).toString() + " Km", Toast.LENGTH_LONG).show();
     }
 
     private void reCalculateMarkersAndRoute() {
         if (mMap != null) {
             mMap.clear();
 
+            if(!medico.isEmpty() && !paciente.isEmpty()){
+                Log.i("RUTA", "ENTRA");
+                String url = getUrl(medico.getLatLng(), paciente.getLatLng(), "driving");
+                new FetchURL(EmergenciasMedico.this).execute(url, "driving");
+            }
+
             // Draw current location
-            if (!usuario.isEmpty())
-                mMap.addMarker(new MarkerOptions().position(usuario.getLatLng()).title(usuario.getTexto()));
+            if (!medico.isEmpty())
+                mMap.addMarker(new MarkerOptions().position(medico.getLatLng()).title(medico.getTexto()));
 
             // Draw goal marker
-            if (!doctor.isEmpty())
-                mMap.addMarker(new MarkerOptions().position(doctor.getLatLng()).title(doctor.getTexto()).icon(BitmapDescriptorFactory.fromResource(R.drawable.doctor)));
+            if (!paciente.isEmpty())
+                mMap.addMarker(new MarkerOptions().position(paciente.getLatLng()).title(paciente.getTexto()).icon(BitmapDescriptorFactory.fromResource(R.drawable.sitio)));
 
-            if(!usuario.isEmpty() && !doctor.isEmpty()){
-                String url = getUrl(usuario.getLatLng(), doctor.getLatLng(), "driving");
-                new FetchURL(EmergenciaUsuario.this).execute(url, "driving");
-            }
         }
     }
 
@@ -439,7 +475,7 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
                             // Location settings are not satisfied, but this can be fixed by showing the user a dialog.
                             try {// Show the dialog by calling startResolutionForResult(), andcheck the result in onActivityResult().
                                 ResolvableApiException resolvable = (ResolvableApiException) e;
-                                resolvable.startResolutionForResult(EmergenciaUsuario.this, REQUEST_CHECK_SETTINGS);
+                                resolvable.startResolutionForResult(EmergenciasMedico.this, REQUEST_CHECK_SETTINGS);
                             } catch (IntentSender.SendIntentException sendEx) {
                                 // Ignore the error.
                             }
@@ -477,7 +513,7 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
                     startLocationUpdates();
                 } else {
                     Toast.makeText(this,
-                            "Sin accesoa localización, hardware deshabilitado!",
+                            "Sin acceso a localización, hardware deshabilitado!",
                             Toast.LENGTH_LONG).show();
                 }
                 return;
@@ -487,8 +523,8 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
 
     protected LocationRequest createLocationRequest() {
         LocationRequest mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(10000); //tasa de refresco en milisegundos
-        mLocationRequest.setFastestInterval(5000); //máxima tasa de refresco
+        mLocationRequest.setInterval(5000); //tasa de refresco en milisegundos
+        mLocationRequest.setFastestInterval(4000); //máxima tasa de refresco
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         return mLocationRequest;
     }
@@ -543,14 +579,14 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        /*
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
-                doctor.setLatLng(latLng);
+                paciente.setLatLng(latLng);
                 Geocoder mGeocoder = new Geocoder(getBaseContext());
                 try {
-                    doctor.setTexto(mGeocoder.getFromLocation(doctor.getLatitud(), doctor.getLongitud(), 2).get(0).getAddressLine(0));
+                    paciente.setTexto(mGeocoder.getFromLocation(paciente.getLatitud(), paciente.getLongitud(), 2).get(0).getAddressLine(0));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -558,24 +594,26 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
                 showDistance();
             }
         });
+
+         */
         if (lightLevel != null && lightLevel < DARK_MAP_THRESHOLD)
-            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(EmergenciaUsuario.this, R.raw.dark_style_map));
+            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(EmergenciasMedico.this, R.raw.dark_style_map));
         else
-            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(EmergenciaUsuario.this, R.raw.light_style_map));
+            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(EmergenciasMedico.this, R.raw.light_style_map));
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(LAT1, LONG1)));
         if(ESTADO_INICIADO){
-            map.put("latitud", usuario.getLatitud());
-            map.put("longitud", usuario.getLongitud());
+            map.put("latitud", medico.getLatitud());
+            map.put("longitud", medico.getLongitud());
 
-            dbRef.child("EstadoEmergencia").child(sesUsuario.getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            dbRef.child("AtendiendoEmergencia").child(sesUsuario.getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task2) {
                     if(task2.isSuccessful()){
                     }
                     else
                     {
-                        Toast.makeText(EmergenciaUsuario.this, "No se pudo iniciar la emergencia", Toast.LENGTH_LONG).show();
+                        Toast.makeText(EmergenciasMedico.this, "Error con la localización", Toast.LENGTH_LONG).show();
                     }
                 }
             });

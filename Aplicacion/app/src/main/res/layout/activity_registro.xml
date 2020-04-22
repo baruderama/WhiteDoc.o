@@ -90,7 +90,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:backgroundTint="@color/colorTitles"
-            android:onClick="pantallaPrincipal"
             android:text="@string/btnRegistrarse"
             android:textAlignment="center"
             android:textColor="@color/colorLettersBtn"

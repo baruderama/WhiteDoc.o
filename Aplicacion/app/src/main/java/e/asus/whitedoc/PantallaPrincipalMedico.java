@@ -49,4 +49,9 @@ public class PantallaPrincipalMedico extends AppCompatActivity {
         startActivity(pantallaLogIn);
         finish();
     }
+
+    public void atenderEmergencias(View view) {
+        Intent pantallaEmergenciaMedico = new Intent(getApplicationContext(), EmergenciasMedico.class);
+        startActivity(pantallaEmergenciaMedico);
+    }
 }

@@ -10,12 +10,12 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/backup_descriptor">
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -29,18 +29,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".EmergenciaUsuario"
-            android:label="@string/title_activity_emergencia_usuario"></activity>
-        <activity
-            android:name=".PantallaCarga"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".EmergenciasMedico" />
+        <activity android:name=".EmergenciaUsuario" />
         <activity android:name=".AboutUs" />
         <activity android:name=".PerfilPaciente" />
         <activity android:name=".Chat" />
@@ -55,9 +45,16 @@
         <activity android:name=".ConsultarCitasPersona" />
         <activity android:name=".ModificarMedicamentos" />
         <activity android:name=".GestionMedicamentos" />
+        <activity android:name=".LoginActivity" />
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/app_name" />
+            android:name=".PantallaCarga"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
