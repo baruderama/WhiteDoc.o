@@ -41,7 +41,6 @@ public class Registro extends AppCompatActivity {
     private Spinner spnTipo;
     private Button btnSiguiente;
     private ImageButton btnDatePicker;
-    private TextView txtvwFecha;
 
     private String name;
     private String email;
@@ -66,7 +65,7 @@ public class Registro extends AppCompatActivity {
         btnSiguiente = (Button) findViewById(R.id.btnRegRegistro);
         spnTipo = (Spinner) findViewById(R.id.spnRegTipo);
         btnDatePicker = (ImageButton) findViewById(R.id.imgbtnRegDatePicker);
-        txtvwFecha = (TextView) findViewById(R.id.txtRegFechaNac);
+        txtFecha = (EditText) findViewById(R.id.txtRegFechaNac);
 
         pattern = Pattern
                 .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -90,7 +89,7 @@ public class Registro extends AppCompatActivity {
                 datePickDial = new DatePickerDialog(Registro.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int mYear, int mMonth, int mDayOfMonth) {
-                        txtvwFecha.setText(mDayOfMonth + "/" + (mMonth + 1) + "/" + mYear);
+                        txtFecha.setText(mDayOfMonth + "/" + (mMonth + 1) + "/" + mYear);
                     }
                 }, dia, mes, anio);
                 datePickDial.show();
@@ -104,7 +103,7 @@ public class Registro extends AppCompatActivity {
                 name = txtName.getText().toString();
                 email = txtMail.getText().toString();
                 password = txtPassword.getText().toString();
-                fechaNacimiento = txtvwFecha.getText().toString();
+                fechaNacimiento = txtFecha.getText().toString();
                 Log.i("ENTRA", "fecha " + fechaNacimiento);
                 Matcher matcher = pattern.matcher(email);
                 if (!matcher.find()) {
@@ -149,7 +148,7 @@ public class Registro extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent resultIntent) {
-
+        super.onActivityResult(requestCode, resultCode, resultIntent);
         if (resultCode == RESULT_OK) {
             finish();
         }

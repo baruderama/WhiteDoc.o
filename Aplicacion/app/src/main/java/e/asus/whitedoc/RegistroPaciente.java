@@ -206,6 +206,7 @@ public class RegistroPaciente extends AppCompatActivity {
 
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+            chgedImgView.setImageBitmap(null);
             chgedImgView.setImageBitmap(imageBitmap);
             extras = data.getExtras();
 

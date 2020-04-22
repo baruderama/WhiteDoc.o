@@ -12,18 +12,18 @@
         android:background="#FFFFFF"
         tools:context=".Registro">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="149dp"
-            android:layout_height="123dp"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/logowhitedoc"
+            android:layout_width="match_parent"
+            android:layout_height="171dp"
+            android:layout_marginTop="48dp"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.479"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logowhitedoc_transparente" />
+            app:srcCompat="@drawable/logowhitedoc_transparente"
+            android:scaleType="centerInside"/>
 
         <TextView
             android:id="@+id/textView7"
@@ -41,7 +41,7 @@
 
         <EditText
             android:id="@+id/editTxtRegNom"
-            android:layout_width="wrap_content"
+            android:layout_width="268dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:ems="10"
@@ -54,7 +54,7 @@
 
         <EditText
             android:id="@+id/editTxtRegMail"
-            android:layout_width="wrap_content"
+            android:layout_width="@+id/editTxtRegNom"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
@@ -67,7 +67,7 @@
 
         <Spinner
             android:id="@+id/spnRegTipo"
-            android:layout_width="0dp"
+            android:layout_width="@+id/editTxtRegNom"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="@+id/editTxtRegPass"
@@ -77,7 +77,7 @@
 
         <EditText
             android:id="@+id/editTxtRegPass"
-            android:layout_width="wrap_content"
+            android:layout_width="@+id/editTxtRegNom"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
@@ -89,7 +89,7 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="0dp"
+            android:layout_width="@+id/editTxtRegNom"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editTxtRegPass"
             android:layout_marginTop="16dp"
@@ -98,24 +98,24 @@
             app:layout_constraintStart_toStartOf="@+id/editTxtRegPass"
             app:layout_constraintTop_toBottomOf="@+id/editTxtRegPass">
 
-            <TextView
+            <EditText
                 android:id="@+id/txtRegFechaNac"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_height="match_parent"
                 android:layout_weight="0.5"
+                android:textAlignment="center"
+
                 android:backgroundTint="#FFFFFF"
                 android:hint="@string/txt_fecha_nacimiento"
                 android:inputType="date"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                />
 
             <ImageButton
                 android:id="@+id/imgbtnRegDatePicker"
                 android:layout_width="24dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:gravity="right"
                 app:srcCompat="@drawable/calendar" />
 
         </LinearLayout>
@@ -124,7 +124,7 @@
             android:id="@+id/btnRegRegistro"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="32dp"
             android:backgroundTint="@color/colorTitles"
             android:onClick="pantallaPrincipal"
             android:text="@string/txt_siguiente"

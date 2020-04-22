@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imgviewRegMedImg"
-        android:layout_width="158dp"
-        android:layout_height="168dp"
+        android:layout_width="190dp"
+        android:layout_height="184dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/user"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
 
             <Button
                 android:id="@+id/btnRegMedTomarFoto"
-                android:layout_width="29dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:backgroundTint="@color/colorLettersBtn"
@@ -80,7 +80,7 @@
         <Spinner
             android:id="@+id/spnRegMedEspecialidades"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp" />
 
         <Button

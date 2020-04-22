@@ -85,41 +85,40 @@ public class PerfilMedico extends AppCompatActivity {
         this.fechaNacMedico.setEnabled(false);
         this.especialidadMedico.setEnabled(false);
 
+
+/*
         final String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
         dbRef.child(id).child("name").setValue(nombreMedico.getText().toString());
         dbRef.child(id).child("fecha_nacimiento").setValue(fechaNacMedico.getText().toString());
         dbRef.child(id).child("especialidad").setValue(especialidadMedico.getText().toString());
 
-        StorageReference fotoRef = FirebaseStorage.getInstance().getReference().child(id + ".jpg");
-        String uri;
+        StorageReference fotoRef = FirebaseStorage.getInstance().getReference().child(id + ".jpeg");
+        String uri = id + ".jpeg";
+        String imgPath;
 
-
-        // Get the data from an ImageView as bytes
-        imgFotoPerfilMedico.setDrawingCacheEnabled(true);
-        imgFotoPerfilMedico.buildDrawingCache();
-        Bitmap bitmap = ((BitmapDrawable) imgFotoPerfilMedico.getDrawable()).getBitmap();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
+        Bitmap bmp = drawableToBitmap((PictureDrawable) imgFotoPerfilMedico.getDrawable());
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] datas = baos.toByteArray();
 
-        UploadTask uploadTask = fotoRef.putBytes(data);
+
+        // Empezamos con la subida a Firebase
+        UploadTask uploadTask = mountainImagesRef.putBytes(datas);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
+                Toast.makeText(getBaseContext(),"Hubo un error",Toast.LENGTH_LONG);
+                imgPath="";
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                dbRef.child(id).child("url_foto").setValue();
+                Toast.makeText(getBaseContext(),"Subida con exito",Toast.LENGTH_LONG);
             }
         });
-    }
 
-    private String urlFoto() {
-        Bitmap bm = drawableToBitmap((PictureDrawable) imgFotoPerfilMedico.getDrawable());
-
-        return null;
+ */
+        Toast.makeText(getBaseContext(),"No implementada la subida de imágenes",Toast.LENGTH_LONG).show();
     }
 
     public Bitmap drawableToBitmap(PictureDrawable pd) {

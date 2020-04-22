@@ -196,12 +196,12 @@ public class RegistroMedico extends AppCompatActivity {
 
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+            chgedImgView.setImageBitmap(null);
             chgedImgView.setImageBitmap(imageBitmap);
-            extras = data.getExtras();
 
             String timeStamp = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss").format(new Date());
 
-// Creamos una referencia a la carpeta y el nombre de la imagen donde se guardara
+            // Creamos una referencia a la carpeta y el nombre de la imagen donde se guardara
             StorageReference mountainImagesRef = mStorage.child("fotos").child(timeStamp + ".jpeg");
             mCurrentPhotoPath = timeStamp + ".jpeg";
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
