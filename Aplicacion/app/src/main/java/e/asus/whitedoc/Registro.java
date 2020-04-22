@@ -1,19 +1,22 @@
 package e.asus.whitedoc;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,32 +26,50 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Registro extends AppCompatActivity {
+    static final int MY_PERMISSIONS_REQUEST_CAMERA = 0;
+    static final int MY_PERMISSIONS_REQUEST_GALLERY = 1;
+
     private EditText txtName;
     private EditText txtMail;
     private EditText txtPassword;
+    private EditText txtFecha;
     private Spinner spnTipo;
-    private Button btnRegistrar;
+    private Button btnSiguiente;
+    private ImageButton btnDatePicker;
 
     private String name;
     private String email;
     private String password;
     private String type;
+    private String fechaNacimiento;
+    private Calendar calendario;
+    private DatePickerDialog datePickDial;
 
-    private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
+
+    private Pattern pattern;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-        mAuth = FirebaseAuth.getInstance();
 
+        fechaNacimiento = "";
         txtName = (EditText) findViewById(R.id.editTxtRegNom);
         txtMail = (EditText) findViewById(R.id.editTxtRegMail);
         txtPassword = (EditText) findViewById(R.id.editTxtRegPass);
-        btnRegistrar = (Button) findViewById(R.id.btnRegRegistro);
+        btnSiguiente = (Button) findViewById(R.id.btnRegRegistro);
         spnTipo = (Spinner) findViewById(R.id.spnRegTipo);
+        btnDatePicker = (ImageButton) findViewById(R.id.imgbtnRegDatePicker);
+        txtFecha = (EditText) findViewById(R.id.txtRegFechaNac);
+
+        pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.spinner_registro, android.R.layout.simple_spinner_item);
@@ -57,103 +78,80 @@ public class Registro extends AppCompatActivity {
         // Apply the adapter to the spinner
         spnTipo.setAdapter(adapter);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+        btnDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                calendario = Calendar.getInstance();
+                int dia = calendario.get(Calendar.DAY_OF_MONTH);
+                int mes = calendario.get(Calendar.MONTH);
+                int anio = calendario.get(Calendar.YEAR);
+
+                datePickDial = new DatePickerDialog(Registro.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int mYear, int mMonth, int mDayOfMonth) {
+                        txtFecha.setText(mDayOfMonth + "/" + (mMonth + 1) + "/" + mYear);
+                    }
+                }, dia, mes, anio);
+                datePickDial.show();
+            }
+        });
+
+        btnSiguiente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
                 name = txtName.getText().toString();
                 email = txtMail.getText().toString();
                 password = txtPassword.getText().toString();
-                type = spnTipo.getItemAtPosition(spnTipo.getSelectedItemPosition()).toString();
-                if(!name.isEmpty() && !email.isEmpty() && !password.isEmpty()){
-                    if(password.length() >= 6){
-                        registerUser();
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(), "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_LONG);
-                    }
+                fechaNacimiento = txtFecha.getText().toString();
+                Log.i("ENTRA", "fecha " + fechaNacimiento);
+                Matcher matcher = pattern.matcher(email);
+                if (!matcher.find()) {
+                    Toast.makeText(getApplicationContext(), "Correo incorrecto", Toast.LENGTH_LONG).show();
+                } else {
+                    type = spnTipo.getItemAtPosition(spnTipo.getSelectedItemPosition()).toString();
+                    if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && !fechaNacimiento.isEmpty()) {
+                        Log.i("ENTRA2", "type" + type);
+                        if (password.length() >= 6) {
+                            Intent intent;
+                            if (type.equals("Médico")) {
+                                intent = new Intent(getApplicationContext(), RegistroMedico.class);
+                                intent.putExtra("name", name);
+                                intent.putExtra("email", email);
+                                intent.putExtra("password", password);
+                                intent.putExtra("type", type);
+                                intent.putExtra("fecha", fechaNacimiento);
+                                startActivity(intent);
+                            } else {
+                                if (type.equals("Paciente")) {
+                                    intent = new Intent(getApplicationContext(), RegistroPaciente.class);
+                                    intent.putExtra("name", name);
+                                    intent.putExtra("email", email);
+                                    intent.putExtra("password", password);
+                                    intent.putExtra("type", type);
+                                    intent.putExtra("fecha", fechaNacimiento);
+                                    startActivity(intent);
+                                }
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_LONG);
+                        }
 
+                    } else {
+                        Log.i("NO ENTRA2", "fecha2 " + fechaNacimiento);
+                        Toast.makeText(getApplicationContext(), "Hay campos vacíos, debe completarlos para registrarse", Toast.LENGTH_LONG);
+                    }
                 }
-                else{
-                    Toast.makeText(getApplicationContext(), "Hay campos vacíos, debe completarlos para registrarse", Toast.LENGTH_LONG);
-                }
+
             }
         });
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }
-
-    private void registerUser(){
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(Registro.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("name", name);
-                    map.put("email", email);
-                    map.put("password", password);
-                    map.put("type", type);
-                    String id = mAuth.getCurrentUser().getUid();
-                    mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task2) {
-                            if(task2.isSuccessful()){
-                                Intent intent;
-                                if(type.equals("Médico")){
-                                    intent = new Intent(getApplicationContext(), PantallaPrincipalMedico.class);
-                                    startActivity(intent);
-                                }
-                                else{
-                                    if(type.equals("Paciente")){
-                                        intent = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
-                                        startActivity(intent);
-                                    }
-                                }
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                user.sendEmailVerification();
-                                finish();
-                            }
-                            else
-                            {
-                                Toast.makeText(getApplicationContext(), "No fue posible crear los datos correctamente", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"Este usuario ya está registrado",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-    private void updateUI(FirebaseUser currentUser) {
-        if(currentUser != null)
-        {
-            mAuth.signOut();
-        }
-    }
-
-    public void pantallaPrincipal(View v){
-        final EditText nombre= findViewById(R.id.editTxtRegNom);
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-        String medico="medico";
-
-        if(nombre.getText().toString().equals(medico)) {
-            Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalMedico.class);
-            startActivity(pantallaPrincipal);
-        }
-        else {
-            Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
-            startActivity(pantallaPrincipal);
+    protected void onActivityResult(int requestCode, int resultCode, Intent resultIntent) {
+        super.onActivityResult(requestCode, resultCode, resultIntent);
+        if (resultCode == RESULT_OK) {
+            finish();
         }
     }
 }

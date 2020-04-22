@@ -25,18 +25,15 @@ public class PantallaPrincipalMedico extends AppCompatActivity {
     public void actividadPerfilMedico(View v) {
         Intent pantallaperfil = new Intent(getApplicationContext(), PerfilMedico.class);
         startActivity(pantallaperfil);
-        //Toast.makeText(this, "Aun no hay pantalla perfil de medico", Toast.LENGTH_SHORT).show();
     }
 
     public void actividadPacientes(View v) {
-        /*Intent pantallaPaciente = new Intent(getApplicationContext(), DetallePaciente.class);
-        startActivity(pantallaPaciente);*/
-        Toast.makeText(this, "Aun no hay pantalla de listado de pacientes", Toast.LENGTH_SHORT).show();
+        Intent pantallaPaciente = new Intent(getApplicationContext(), Chat.class);
+        startActivity(pantallaPaciente);
     }
     public void actividadAceptarCitas(View v) {
-        /*Intent pantallaPaciente = new Intent(getApplicationContext(), DetallePaciente.class);
-        startActivity(pantallaPaciente);*/
-        Toast.makeText(this, "Aun no hay pantalla de aceptar citas", Toast.LENGTH_SHORT).show();
+        Intent pantallaAceptarCitas = new Intent(getApplicationContext(), AceptarRechazarCitas.class);
+        startActivity(pantallaAceptarCitas);
     }
     public void actividadHorarioAtencion(View v) {
         Intent pantallaHorarioAtencion = new Intent(getApplicationContext(), DisponibilidadMedico.class);

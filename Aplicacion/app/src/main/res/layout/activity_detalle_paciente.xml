@@ -6,84 +6,161 @@
     android:layout_height="match_parent"
     tools:context=".PerfilPaciente">
 
-    <ImageView
-        android:id="@+id/imgViewDetPac"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="64dp"
-        android:text="@string/txt_nombre"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgViewDetPac" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView12" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:text="@string/txt_edad"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView12"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:text="@string/txt_cita"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView14"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView19" />
-
-    <Button
-        android:id="@+id/button13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="agregarRecordatorio"
-        android:text="Agregar recordatorio"
-        android:textColor="@color/colorTitles"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20"
-        app:layout_constraintVertical_bias="0.296" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_perfilPacienteFoto"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="100dp"
+                android:contentDescription="@string/imgDescripcionFotoPaciente"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/txt_perfilPacienteNombreTitle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:text="@string/txtNombrePacienteTitle"
+                android:textAlignment="viewStart"
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.367"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_perfilPacienteFoto" />
+
+            <ImageButton
+                android:id="@+id/img_perfilPacienteEditNombre"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginBottom="7dp"
+                android:contentDescription="@string/imgDescripcionBtnEditar"
+                android:onClick="editarNombrePaciente"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toTopOf="@+id/txt_perfilPacienteNombre"
+                app:layout_constraintStart_toEndOf="@+id/txt_perfilPacienteNombreTitle"
+                app:srcCompat="@drawable/edit" />
+
+            <ImageButton
+                android:id="@+id/img_perfilPacienteEditFotoGaleria"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/imgDescripcionBtnGaleria"
+                android:onClick="cambiarFotoPerfilGaleria"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toEndOf="@+id/img_perfilPacienteFoto"
+                app:layout_constraintTop_toTopOf="@+id/img_perfilPacienteFoto"
+                app:srcCompat="@drawable/galeriaicon" />
+
+            <ImageButton
+                android:id="@+id/img_perfilPacienteEditFotoCamara"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/imgDescripcionBtnCamara"
+                android:onClick="cambiarFotoPerfilCamara"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toEndOf="@+id/img_perfilPacienteFoto"
+                app:layout_constraintTop_toBottomOf="@+id/img_perfilPacienteEditFotoGaleria"
+                app:srcCompat="@drawable/cameraicon" />
+
+            <ImageButton
+                android:id="@+id/img_perfilPacienteEditFechNac"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginBottom="7dp"
+                android:contentDescription="@string/imgDescripcionBtnEditar"
+                android:onClick="editarFechaNacPaciente"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toTopOf="@+id/txt_perfilPacienteFechNac"
+                app:layout_constraintStart_toEndOf="@+id/txt_perfilPacienteFechNacTitle"
+                app:srcCompat="@drawable/edit" />
+
+            <EditText
+                android:id="@+id/txt_perfilPacienteNombre"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:autofillHints="@string/txtNombrePacienteHint"
+                android:hint="@string/txtNombrePacienteHint"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_perfilPacienteNombreTitle" />
+
+            <EditText
+                android:id="@+id/txt_perfilPacienteFechNac"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/txtFechaNacPacienteHint"
+                android:autofillHints="@string/txtFechaNacPacienteHint"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_perfilPacienteFechNacTitle" />
+
+            <TextView
+                android:id="@+id/txt_perfilPacienteFechNacTitle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/txtFechaNacPacienteTitle"
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.367"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_perfilPacienteNombre" />
+<!--
+            <Button
+                android:id="@+id/btn_perfilPacienteAgregarRecordatorio"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:onClick="agregarRecordatorio"
+                android:text="Agregar recordatorio"
+                android:textColor="@color/colorTitles"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_perfilPacienteGuardar" />
+-->
+            <Button
+                android:id="@+id/btn_perfilPacienteGuardar"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:onClick="guardarPerfilPaciente"
+                android:text="@string/btnGuardarCambiosPaciente"
+                android:textColor="#FD0000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_perfilPacienteFechNac" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

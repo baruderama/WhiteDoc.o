@@ -18,7 +18,7 @@ public class PantallaPrincipalUsuario extends AppCompatActivity {
     }
 
     public void programarCita(View v) {
-        Intent pantallaBuscar = new Intent(getApplicationContext(), ProgramarCita.class);
+        Intent pantallaBuscar = new Intent(getApplicationContext(), ActividadProgramarCita.class);
         startActivity(pantallaBuscar);
     }
 
@@ -44,9 +44,8 @@ public class PantallaPrincipalUsuario extends AppCompatActivity {
 
 
     public void verDoctores(View view) {
-        Toast.makeText(this, "Pantalla no implementada (Derivado de Lista de Chats)", Toast.LENGTH_SHORT).show();
-        // Intent pantallaAgregar = new Intent(getApplicationContext(), ModificarMedicamentos.class);
-        // startActivity(pantallaAgregar);
+        Intent pantallaDoctores = new Intent(getApplicationContext(), Chat.class);
+        startActivity(pantallaDoctores);
     }
 
     public void signOut(View view) {
