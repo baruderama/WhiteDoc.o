@@ -288,10 +288,6 @@ public class EmergenciasMedico extends FragmentActivity implements OnMapReadyCal
     private void cancelarEmergencia() {
         if(ESTADO_INICIADO) {
             ESTADO_INICIADO = false;
-            if(!atendiendo.equals("N/A")) {
-                dbRef.child("EstadoEmergencia").child(atendiendo).child("estado").setValue("buscando");
-                dbRef.child("EstadoEmergencia").child(atendiendo).child("asignado").setValue("N/A");
-            }
             dbRef.child("AtendiendoEmergencia").child(sesUsuario.getUid()).removeValue();
         }
         finish();
@@ -309,7 +305,7 @@ public class EmergenciasMedico extends FragmentActivity implements OnMapReadyCal
                         if(dataSnapshot.child("estado").getValue().equals("buscando")) {
                             atendiendo = dataSnapshot.getKey();
                             map.put("estado", "ocupado");
-                            map.put("asignado", "atendiendo");
+                            map.put("asignado", atendiendo);
 
                             dbRef.child("EstadoEmergencia").child(atendiendo).child("estado").setValue("atendido");
                             dbRef.child("EstadoEmergencia").child(atendiendo).child("asignado").setValue(sesUsuario.getUid());
@@ -325,7 +321,7 @@ public class EmergenciasMedico extends FragmentActivity implements OnMapReadyCal
                         if(dataSnapshot.child("estado").getValue().equals("buscando")) {
                             atendiendo = dataSnapshot.getKey();
                             map.put("estado", "ocupado");
-                            map.put("asignado", "atendiendo");
+                            map.put("asignado", atendiendo);
 
                             dbRef.child("EstadoEmergencia").child(atendiendo).child("estado").setValue("atendido");
                             dbRef.child("EstadoEmergencia").child(atendiendo).child("asignado").setValue(sesUsuario.getUid());
@@ -363,8 +359,9 @@ public class EmergenciasMedico extends FragmentActivity implements OnMapReadyCal
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 if(!atendiendo.equals("N/A")) {
-                    dbRef.child("AtendiendoEmergencia").child(sesUsuario.getUid()).child("asignado").setValue("N/A");
-                    dbRef.child("AtendiendoEmergencia").child(sesUsuario.getUid()).child("estado").setValue("libre");
+                    atendiendo = "N/A";
+                    map.put("estado", "libre");
+                    map.put("asignado", atendiendo);
                 }
             }
         });
