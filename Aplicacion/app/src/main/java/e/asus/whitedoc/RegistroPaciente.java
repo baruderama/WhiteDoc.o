@@ -161,12 +161,12 @@ public class RegistroPaciente extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task2) {
                             if(task2.isSuccessful()){
                                 Intent intent;
-                                if(type.equals("Médico")){
+                                if(type == "Médico"){
                                     intent = new Intent(getApplicationContext(), PantallaPrincipalMedico.class);
                                     startActivity(intent);
                                 }
                                 else{
-                                    if(type.equals("Paciente")){
+                                    if(type == "Paciente"){
                                         intent = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
                                         startActivity(intent);
                                     }

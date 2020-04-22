@@ -15,7 +15,6 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -77,7 +76,6 @@ public class EmergenciasMedico extends FragmentActivity implements OnMapReadyCal
     private FirebaseUser sesUsuario;
     private Map<String, Object> map;
     private String atendiendo;
-    private Button boton;
 
     private GoogleMap mMap;
     private Lugar medico;
@@ -379,23 +377,6 @@ public class EmergenciasMedico extends FragmentActivity implements OnMapReadyCal
     }
 
     private void inflar() {
-        boton = (Button) findViewById(R.id.btnEmergenciaPropia);
-        boton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(ESTADO_INICIADO && !atendiendo.equals("N/A")) {
-                    dbRef.child("EstadoEmergencia").child(atendiendo).child("estado").setValue("terminado");
-                    dbRef.child("EstadoEmergencia").child(atendiendo).child("asignado").setValue("N/A");
-
-                    atendiendo = "N/A";
-                    map.put("estado", "libre");
-                    map.put("asignado", "N/A");
-
-                    paciente = new Lugar();
-                }
-            }
-        });
-
     }
 
     private void showDistance() {
