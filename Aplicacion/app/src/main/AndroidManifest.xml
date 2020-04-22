@@ -33,7 +33,13 @@
         <activity android:name=".EmergenciaUsuario" />
         <activity android:name=".AboutUs" />
         <activity android:name=".PerfilPaciente" />
+        <activity android:name=".AceptarRechazarCitas"></activity>
+        <activity android:name=".calendarioCita" />
+        <activity android:name=".ActividadProgramarCita" />
+        <activity android:name=".MessageActivity" />
+
         <activity android:name=".Chat" />
+
         <activity android:name=".PantallaPrincipalMedico" />
         <activity android:name=".DisponibilidadMedico" />
         <activity android:name=".HistorialMedicosXPaciente" />
