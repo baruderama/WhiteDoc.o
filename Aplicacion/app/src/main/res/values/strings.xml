@@ -40,4 +40,5 @@
         <item>Paciente</item>
         <item>Médico</item>
     </string-array>
+    <string name="title_activity_emergencia_usuario">Map</string>
 </resources>

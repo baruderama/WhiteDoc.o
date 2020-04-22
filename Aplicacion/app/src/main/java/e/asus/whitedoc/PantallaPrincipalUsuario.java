@@ -38,9 +38,8 @@ public class PantallaPrincipalUsuario extends AppCompatActivity {
     }
 
     public void emergencia(View v) {
-        Toast.makeText(this, "Pantalla no implementada", Toast.LENGTH_SHORT).show();
-        // Intent pantallaAgregar = new Intent(getApplicationContext(), ModificarMedicamentos.class);
-        // startActivity(pantallaAgregar);
+        Intent pantallaEmergencia = new Intent(getApplicationContext(), EmergenciaUsuario.class);
+        startActivity(pantallaEmergencia);
     }
 
 

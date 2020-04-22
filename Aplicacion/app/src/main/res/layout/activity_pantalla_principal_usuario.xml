@@ -9,6 +9,8 @@
     android:layout_marginRight="7.5dp"
     android:layout_marginLeft="7.5dp"
     tools:context=".PantallaPrincipalUsuario">
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,14 +24,12 @@
             <FrameLayout
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:minHeight="100dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_height="0dp">
 
                 <ImageView
                     android:id="@+id/logoPrincipalCliente"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     app:srcCompat="@drawable/logowhitedoc_transparente" />
 
                 <ImageButton
@@ -45,7 +45,7 @@
             </FrameLayout>
 
             <LinearLayout
-                android:layout_weight="4"
+                android:layout_weight="5"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical">
@@ -53,62 +53,56 @@
                 <Button
                     android:id="@+id/btnCitaMedica"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:onClick="programarCita"
                     android:text="@string/btnCitaCliente" />
 
                 <Button
                     android:id="@+id/btnCitasCliente"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:onClick="verCitas"
                     android:text="@string/btnHistorialCliente" />
 
                 <Button
                     android:id="@+id/btnDoctores"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:onClick="verDoctores"
                     android:text="@string/btnDoctoresCliente" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btnMedPropio"
+                        android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:onClick="modificarMedicamentos"
                         android:text="@string/btnMedCliente" />
 
                     <Button
                         android:id="@+id/btnPerfilCliente"
+                        android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:onClick="verPerfil"
                         android:text="@string/btnPerfilCliente" />
 
                 </LinearLayout>
 
                 <Button
-                    android:textFontWeight="7"
                     android:id="@+id/btnEmergenciaPropia"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="7"
-                    android:onClick="emergencia"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="15dp"
                     android:backgroundTint="@color/colorTitles"
-                    android:textColor="@color/colorLettersBtn"
-                    android:text="@string/btnEmergencia" />
+                    android:onClick="emergencia"
+                    android:text="@string/btnEmergencia"
+                    android:textColor="@color/colorLettersBtn" />
 
             </LinearLayout>
 
