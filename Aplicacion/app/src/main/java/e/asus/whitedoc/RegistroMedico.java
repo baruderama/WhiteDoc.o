@@ -158,7 +158,7 @@ public class RegistroMedico extends AppCompatActivity {
             name = extras.getString("name");
             email = extras.getString("email");
             password = extras.getString("password");
-            fechaNacimiento = extras.getString("fechaNacimiento");
+            fechaNacimiento = extras.getString("fecha");
             type = extras.getString("type");
     }
 

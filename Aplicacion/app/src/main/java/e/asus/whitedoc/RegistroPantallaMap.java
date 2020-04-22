@@ -134,12 +134,13 @@ public class RegistroPantallaMap extends FragmentActivity implements OnMapReadyC
                             if (addresses != null && !addresses.isEmpty()) {
                                 Address addressResult = addresses.get(0);
                                 LatLng position = new LatLng(addressResult.getLatitude(), addressResult.getLongitude());
-                                mMap.clear();
+
                                 if (mMap != null) {
                                     MarkerOptions myMarkerOptions = new MarkerOptions();
                                     myMarkerOptions.position(position);
                                     myMarkerOptions.title("Dirección Encontrada");
                                     myMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+                                    mMap.clear();
                                     currentLocationMarker = mMap.addMarker(myMarkerOptions);
                                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 14));
                                 }
