@@ -33,7 +33,7 @@ public class UsersFragment extends Fragment {
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private List<User> mUsers;
-    String igual;
+    String igual="";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +64,7 @@ public class UsersFragment extends Fragment {
                     if(user.getEmail().equals(firebaseUser.getEmail())){
                          igual=user.getType();
                     }
+
                             if (!user.getEmail().equals(firebaseUser.getEmail())
                                     && !user.getType().equals(igual)) {
                                 mUsers.add(user);
