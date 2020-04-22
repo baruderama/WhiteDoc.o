@@ -49,6 +49,17 @@
     <string name="btnPerfilMedicoEspecialidadEdit">Boton que se encarga de habilitar edicion de la especialidad del medico</string>
     <string name="btnPerfilMedicoConsultorioEdit">Boton que se encarga de habilitar edicion del consultorio del medico</string>
     <string name="btnPerfilMedicoFecNacEdit">Boton que se encarga de habilitar edicion de la fecha de nacimiento del medico</string>
+
+    <string name="txtNombrePacienteTitle">Nombre</string>
+    <string name="txtFechaNacPacienteTitle">Fecha de Nacimiento</string>
+    <string name="imgDescripcionFotoPaciente">Esta es la foto de perfil del paciente</string>
+    <string name="imgDescripcionBtnGaleria">Galeria para seleccionar foto de perfil</string>
+    <string name="imgDescripcionBtnEditar">Boton para activar el modificar campo de texto</string>
+    <string name="imgDescripcionBtnCamara">Camara para tomar foto de perfil</string>
+    <string name="txtNombrePacienteHint">Nombre del paciente</string>
+    <string name="txtFechaNacPacienteHint">Fecha de Nacimiento</string>
+    <string name="btnGuardarCambiosPaciente">Guardar Cambios</string>
+
     <string-array name="spinner_registro">
         <item>Paciente</item>
         <item>Médico</item>

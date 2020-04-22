@@ -81,6 +81,7 @@ public class PerfilMedico extends AppCompatActivity {
         this.especialidadMedico.setFocusable(true);
         this.especialidadMedico.requestFocus();
     }
+
     public void editarFechaNacMedico(View v) {
         this.fechaNacMedico.setEnabled(true);
         this.fechaNacMedico.setClickable(true);
@@ -173,9 +174,12 @@ public class PerfilMedico extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     try {
                         Uri imageUri = data.getData();
-                        InputStream imageStream = getContentResolver().openInputStream(imageUri);
-                        Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                        this.imgFotoPerfilMedico.setImageBitmap(selectedImage);
+                        if(imageUri!=null)
+                        {
+                            InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                            Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                            this.imgFotoPerfilMedico.setImageBitmap(selectedImage);
+                        }
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -186,7 +190,10 @@ public class PerfilMedico extends AppCompatActivity {
                 {
                     Bundle extras =data.getExtras();
                     Bitmap selectedImage= (Bitmap) extras.get("data");
-                    this.imgFotoPerfilMedico.setImageBitmap(selectedImage);
+                    if(selectedImage!=null)
+                    {
+                        this.imgFotoPerfilMedico.setImageBitmap(selectedImage);
+                    }
                 }
                 break;
         }
