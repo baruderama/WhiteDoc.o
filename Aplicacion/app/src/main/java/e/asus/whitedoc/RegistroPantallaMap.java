@@ -66,12 +66,9 @@ public class RegistroPantallaMap extends FragmentActivity implements OnMapReadyC
 
     private GoogleMap mMap;
     static final int PERMISSION_LOCATION = 0;
-    static final double RADIUS_OF_EARTH_KM = 6371.01;
-    private android.location.Location mCurrentLocation;
-    private FusedLocationProviderClient mFusedLocationClient;
-    private LocationRequest mLocationRequest;
     private EditText txtDirections;
     private Button btnRegMedMapRegistrar;
+    private Float lightLevel;
 
     private String name;
     private String email;
@@ -80,8 +77,13 @@ public class RegistroPantallaMap extends FragmentActivity implements OnMapReadyC
     private String fechaNacimiento;
     private String especialidad;
     private String mCurrentPhotoPath;
-    private String longitud;
-    private String latitud;
+    static final double DARK_MAP_THRESHOLD = 3;
+    private FusedLocationProviderClient mFusedLocationClient;
+    private LocationRequest mLocationRequest;
+
+    SensorManager sensorManager;
+    Sensor lightSensor;
+    SensorEventListener lightSensorListener;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -97,6 +99,31 @@ public class RegistroPantallaMap extends FragmentActivity implements OnMapReadyC
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         recibirDatos();
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        lightSensorListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                lightLevel = event.values[0];
+                if (mMap != null) {
+                    if (lightLevel < DARK_MAP_THRESHOLD) {
+                        Log.i("MAPS", "DARK MAP " + lightLevel);
+                        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(RegistroPantallaMap.this, R.raw.dark_style_map));
+                    } else {
+                        Log.i("MAPS", "LIGHT MAP " + lightLevel);
+                        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(RegistroPantallaMap.this, R.raw.light_style_map));
+                    }
+                }
+            }
+
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+            }
+        };
+
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
