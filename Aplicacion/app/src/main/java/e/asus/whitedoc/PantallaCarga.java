@@ -47,9 +47,11 @@ public class PantallaCarga extends AppCompatActivity {
                             }
                         }
                     }
-                    Intent pantallaLogIn = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(pantallaLogIn);
-                    finish();
+                    else {
+                        Intent pantallaLogIn = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(pantallaLogIn);
+                        finish();
+                    }
                 }
 
                 @Override

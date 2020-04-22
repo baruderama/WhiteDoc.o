@@ -114,8 +114,8 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
         sesUsuario = FirebaseAuth.getInstance().getCurrentUser();
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         firstDraw = true;
-        usuario = new Lugar("Usuario");
-        doctor = new Lugar("Doctor");
+        usuario = new Lugar();
+        doctor = new Lugar();
         dbRef = FirebaseDatabase.getInstance().getReference();
         map = new HashMap<>();
         map.put("estado", "buscando");
@@ -308,8 +308,7 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
                 }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
+                public void onCancelled(@NonNull DatabaseError databaseError) { }
             });
         }
     }
@@ -324,15 +323,24 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
                     double doctorLatitud = Double.parseDouble(dataSnapshot.child("latitud").getValue().toString());
                     double doctorLongitud = Double.parseDouble(dataSnapshot.child("longitud").getValue().toString());
                     doctor.setLatLng(new LatLng(doctorLatitud, doctorLongitud));
+                    Geocoder mGeocoder = new Geocoder(getBaseContext());
+                    try {
+                        doctor.setTexto(mGeocoder.getFromLocation(doctor.getLatitud(), doctor.getLongitud(), 2).get(0).getAddressLine(0));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     reCalculateMarkersAndRoute();
+                }
+                else{
+                    map.put("estado", "libre");
+                    map.put("asignado", "N/A");
+                    doctor = new Lugar();
+                    dbRef.child("EstadoEmergencia").child(dataSnapshot.getKey()).removeEventListener(this);
                 }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                    map.put("estado", "buscando");
-                    map.put("asignado", "N/A");
-            }
+            public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
     }
 

@@ -116,8 +116,8 @@ public class EmergenciasMedico extends FragmentActivity implements OnMapReadyCal
         sesUsuario = FirebaseAuth.getInstance().getCurrentUser();
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         firstDraw = true;
-        medico = new Lugar("Medico");
-        paciente = new Lugar("Paciente");
+        medico = new Lugar();
+        paciente = new Lugar();
         dbRef = FirebaseDatabase.getInstance().getReference();
         map = new HashMap<>();
         map.put("estado", "libre");
@@ -348,22 +348,31 @@ public class EmergenciasMedico extends FragmentActivity implements OnMapReadyCal
         dbRef.child("EstadoEmergencia").child(atendiendo).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() != null) {
-                    double pacienteLatitud = Double.parseDouble(dataSnapshot.child("latitud").getValue().toString());
-                    double pacienteLongitud = Double.parseDouble(dataSnapshot.child("longitud").getValue().toString());
-                    paciente.setLatLng(new LatLng(pacienteLatitud, pacienteLongitud));
-                    reCalculateMarkersAndRoute();
+                if (dataSnapshot.exists()) {
+                    if(dataSnapshot.child("latitud").exists() && dataSnapshot.child("longitud").exists()) {
+                        double pacienteLatitud = Double.parseDouble(dataSnapshot.child("latitud").getValue().toString());
+                        double pacienteLongitud = Double.parseDouble(dataSnapshot.child("longitud").getValue().toString());
+                        Geocoder mGeocoder = new Geocoder(getBaseContext());
+                        paciente.setLatLng(new LatLng(pacienteLatitud, pacienteLongitud));
+                        try {
+                            paciente.setTexto(mGeocoder.getFromLocation(paciente.getLatitud(), paciente.getLongitud(), 2).get(0).getAddressLine(0));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        reCalculateMarkersAndRoute();
+                    }
+                }
+                else{
+                    atendiendo = "N/A";
+                    map.put("estado", "libre");
+                    map.put("asignado", atendiendo);
+                    paciente = new Lugar();
+                    dbRef.child("EstadoEmergencia").child(dataSnapshot.getKey()).removeEventListener(this);
                 }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                if(!atendiendo.equals("N/A")) {
-                    atendiendo = "N/A";
-                    map.put("estado", "libre");
-                    map.put("asignado", atendiendo);
-                }
-            }
+            public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
     }
 
@@ -576,23 +585,7 @@ public class EmergenciasMedico extends FragmentActivity implements OnMapReadyCal
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        /*
-        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng latLng) {
-                paciente.setLatLng(latLng);
-                Geocoder mGeocoder = new Geocoder(getBaseContext());
-                try {
-                    paciente.setTexto(mGeocoder.getFromLocation(paciente.getLatitud(), paciente.getLongitud(), 2).get(0).getAddressLine(0));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                reCalculateMarkersAndRoute();
-                showDistance();
-            }
-        });
 
-         */
         if (lightLevel != null && lightLevel < DARK_MAP_THRESHOLD)
             mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(EmergenciasMedico.this, R.raw.dark_style_map));
         else
