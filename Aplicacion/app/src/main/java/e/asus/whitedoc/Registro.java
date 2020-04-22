@@ -13,7 +13,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +27,7 @@ public class Registro extends AppCompatActivity {
     private EditText txtName;
     private EditText txtMail;
     private EditText txtPassword;
+    private EditText txtFecha;
     private Spinner spnTipo;
     private Button btnRegistrar;
 
@@ -43,12 +43,7 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         mAuth = FirebaseAuth.getInstance();
-
-        txtName = (EditText) findViewById(R.id.editTxtRegNom);
-        txtMail = (EditText) findViewById(R.id.editTxtRegMail);
-        txtPassword = (EditText) findViewById(R.id.editTxtRegPass);
-        btnRegistrar = (Button) findViewById(R.id.btnRegRegistro);
-        spnTipo = (Spinner) findViewById(R.id.spnRegTipo);
+        inflateThings();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.spinner_registro, android.R.layout.simple_spinner_item);
@@ -59,6 +54,13 @@ public class Registro extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+    }
+    public void inflateThings() {
+        txtName = (EditText) findViewById(R.id.editTxtRegNom);
+        txtMail = (EditText) findViewById(R.id.editTxtRegMail);
+        txtPassword = (EditText) findViewById(R.id.editTxtRegPass);
+        btnRegistrar = (Button) findViewById(R.id.btnRegRegistro);
+        spnTipo = (Spinner) findViewById(R.id.spnRegTipo);
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +83,6 @@ public class Registro extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public void onStart() {
         super.onStart();

@@ -35,7 +35,20 @@
     <string name="btn_pntPrincipalMedico_Logout">Salir de la sesion</string>
     <string name="contextDescripLogo">Logo de la aplicación</string>
     <string name="txtComoTeLLamas">¿Cómo te llamas?</string>
-
+    <string name="imgDescripPerfilMedicoFoto">Es la foto de perfil del médico</string>
+    <string name="txtEspecialidadMedicoTitle">Especialidad</string>
+    <string name="txtNombreMedicoTitle">Nombre</string>
+    <string name="btnGuardarDatosPerfilMedico">Guardar</string>
+    <string name="txtNombreMedicoHint">Nombre del medico</string>
+    <string name="txtEspecialidadMedicoHint">Especialidad del medico</string>
+    <string name="txtFechNacMedicoHint">Fecha de Nacimiento</string>
+    <string name="txtFechaNacimientoMedicoTitle">Fecha de Nacimiento</string>
+    <string name="txtPerfiMedicoUbicacionConsultorio">Ubicacion Consultorio</string>
+    <string name="btnPerfilMedicoFotoEdit">Boton que se encarga de habilitar edicion de foto de perfil del medico</string>
+    <string name="btnPerfilMedicoNombreEdit">Boton que se encarga de habilitar edicion del nombre del medico</string>
+    <string name="btnPerfilMedicoEspecialidadEdit">Boton que se encarga de habilitar edicion de la especialidad del medico</string>
+    <string name="btnPerfilMedicoConsultorioEdit">Boton que se encarga de habilitar edicion del consultorio del medico</string>
+    <string name="btnPerfilMedicoFecNacEdit">Boton que se encarga de habilitar edicion de la fecha de nacimiento del medico</string>
     <string-array name="spinner_registro">
         <item>Paciente</item>
         <item>Médico</item>
