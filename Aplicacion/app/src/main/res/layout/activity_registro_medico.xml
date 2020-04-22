@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLettersBtn"
+    tools:context=".RegistroMedico">
+
+    <ImageView
+        android:id="@+id/imgviewRegMedImg"
+        android:layout_width="158dp"
+        android:layout_height="168dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linlayoutRegMedVertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgviewRegMedImg"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorLettersBtn"
+        android:backgroundTint="@color/colorLettersBtn"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgviewRegMedImg">
+
+        <LinearLayout
+            android:id="@+id/linlayRegMedBtns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@color/colorLettersBtn"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnRegMedSelFoto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:backgroundTint="@color/colorLettersBtn"
+                android:text="@string/btnSelecFoto"
+                android:textColor="@color/colorTitles"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnRegMedTomarFoto"
+                android:layout_width="29dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:backgroundTint="@color/colorLettersBtn"
+                android:text="@string/btnTomarFoto"
+                android:textColor="@color/colorTitles"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtviewRegMedEspecialidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@color/colorLettersBtn"
+            android:gravity="center"
+            android:text="@string/txt_especialidad"
+            android:textAlignment="center"
+            android:textColor="@color/colorTitles"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spnRegMedEspecialidades"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+
+        <Button
+            android:id="@+id/btnRegMedSiguiente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/colorTitles"
+            android:text="@string/btnAgregarConsultorio"
+            android:textColor="@color/colorLettersBtn"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

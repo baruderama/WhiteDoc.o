@@ -7,8 +7,12 @@
     <string name="txt_edad">Edad</string>
     <string name="txt_cita">Cita</string>
     <string name="txt_fecha">Fecha</string>
+    <string name="txt_fecha_nacimiento">Fecha de nacimiento</string>
     <string name="txt_hora">Hora</string>
+    <string name="hint_direccion">Dirección</string>
+    <string name="txt_siguiente">Siguiente</string>
     <string name="txt_recordatorio">Recordatorio</string>
+    <string name="txt_especialidad">Especialidad</string>
     <string name="txt_select_fecha">Seleccione la fecha</string>
     <string name="txt_select_hora">Seleccione la hora</string>
     <string name="password">Contraseña</string>
@@ -18,12 +22,15 @@
     <string name="invalid_username">Invalid username</string>
     <string name="invalid_password">La contraseña debe tener al menos 5 caracteres</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="btnAgregarConsultorio">Agregar y Ubicar Consultorio</string>
     <string name="btnIniciarSesion">Iniciar Sesión</string>
     <string name="btnRegistrarse">Registrarse</string>
     <string name="txtNoRegistrado">¿No estás registrado?</string>
     <string name="btnCitaCliente">Pedir cita médica</string>
     <string name="btnHistorialCliente">Ver citas</string>
     <string name="btnMedCliente">Medicamentos</string>
+    <string name="btnSelecFoto">Seleccionar foto</string>
+    <string name="btnTomarFoto">Tomar foto</string>
     <string name="btnPerfilCliente">Ver perfil</string>
     <string name="btnEmergencia">EMERGENCIA</string>
     <string name="btnDoctoresCliente">Doctores</string>
@@ -40,4 +47,5 @@
         <item>Paciente</item>
         <item>Médico</item>
     </string-array>
+    <string name="title_activity_registro_pantalla_map">Map</string>
 </resources>
