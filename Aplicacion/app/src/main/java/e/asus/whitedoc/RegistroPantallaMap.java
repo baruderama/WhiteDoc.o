@@ -134,8 +134,8 @@ public class RegistroPantallaMap extends FragmentActivity implements OnMapReadyC
                             if (addresses != null && !addresses.isEmpty()) {
                                 Address addressResult = addresses.get(0);
                                 LatLng position = new LatLng(addressResult.getLatitude(), addressResult.getLongitude());
-                                mMap.clear();
                                 if (mMap != null) {
+                                    mMap.clear();
                                     MarkerOptions myMarkerOptions = new MarkerOptions();
                                     myMarkerOptions.position(position);
                                     myMarkerOptions.title("Dirección Encontrada");
@@ -267,8 +267,10 @@ public class RegistroPantallaMap extends FragmentActivity implements OnMapReadyC
                     map.put("fecha", fechaNacimiento);
                     map.put("especialidad", especialidad);
                     map.put("foto", mCurrentPhotoPath);
-                    map.put("Latitud", currentLocationMarker.getPosition().latitude);
-                    map.put("Longitud", currentLocationMarker.getPosition().longitude);
+                    map.put("latitud", currentLocationMarker.getPosition().latitude);
+                    map.put("longitud", currentLocationMarker.getPosition().longitude);
+
+
 
                     String id = mAuth.getCurrentUser().getUid();
                     mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -276,15 +278,15 @@ public class RegistroPantallaMap extends FragmentActivity implements OnMapReadyC
                         public void onComplete(@NonNull Task<Void> task2) {
                             if(task2.isSuccessful()){
                                 Intent intent;
-                                if(type == "Médico"){
-                                    intent = new Intent(getApplicationContext(), PantallaPrincipalMedico.class);
+                                if(type.equals("Médico")){
+                                    intent = new Intent(RegistroPantallaMap.this, PantallaPrincipalMedico.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
                                 }
-                                else{
-                                    if(type == "Paciente"){
-                                        intent = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
-                                        startActivity(intent);
-                                    }
+                                else if(type.equals("Paciente")){
+                                    intent = new Intent(RegistroPantallaMap.this, PantallaPrincipalUsuario.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
                                 }
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 user.sendEmailVerification();

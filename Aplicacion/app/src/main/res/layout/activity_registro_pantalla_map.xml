@@ -20,7 +20,9 @@
         android:background="@drawable/roundcorner"
         android:backgroundTint="#C6C2C2"
         android:hint="@string/hint_direccion"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:imeOptions="actionDone"
+        android:inputType="text" />
 
 
     <LinearLayout
