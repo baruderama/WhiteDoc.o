@@ -64,4 +64,16 @@
         <item>Paciente</item>
         <item>Médico</item>
     </string-array>
+    <string name="title_activity_emergencia_usuario">Map</string>
+    <string name="continuar">CONTINUAR</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="empezar">EMPEZAR</string>
+    <string name="cancelarlo">CANCELARLO</string>
+    <string name="btn_atenderEmergencias">ATENDER EMERGENCIAS</string>
+    <string name="title_activity_emergencias_medico">Map</string>
+    <string name="dejar_de_buscar">DEJAR DE BUSCAR</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="escoge_un_medico">Escoge un medico</string>
 </resources>

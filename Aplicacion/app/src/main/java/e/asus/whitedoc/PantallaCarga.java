@@ -29,7 +29,7 @@ public class PantallaCarga extends AppCompatActivity {
             finish();
         }
         else {
-            FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference("Users").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if(dataSnapshot.exists()){
@@ -46,6 +46,11 @@ public class PantallaCarga extends AppCompatActivity {
                                 finish();
                             }
                         }
+                    }
+                    else {
+                        Intent pantallaLogIn = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(pantallaLogIn);
+                        finish();
                     }
                 }
 

@@ -29,14 +29,12 @@ public class PantallaPrincipalMedico extends AppCompatActivity {
     }
 
     public void actividadPacientes(View v) {
-        /*Intent pantallaPaciente = new Intent(getApplicationContext(), DetallePaciente.class);
-        startActivity(pantallaPaciente);*/
-        Toast.makeText(this, "Aun no hay pantalla de listado de pacientes", Toast.LENGTH_SHORT).show();
+        Intent pantallaPaciente = new Intent(getApplicationContext(), Chat.class);
+        startActivity(pantallaPaciente);
     }
     public void actividadAceptarCitas(View v) {
-        /*Intent pantallaPaciente = new Intent(getApplicationContext(), DetallePaciente.class);
-        startActivity(pantallaPaciente);*/
-        Toast.makeText(this, "Aun no hay pantalla de aceptar citas", Toast.LENGTH_SHORT).show();
+        Intent pantallaAceptarCitas = new Intent(getApplicationContext(), AceptarRechazarCitas.class);
+        startActivity(pantallaAceptarCitas);
     }
     public void actividadHorarioAtencion(View v) {
         Intent pantallaHorarioAtencion = new Intent(getApplicationContext(), DisponibilidadMedico.class);
@@ -48,5 +46,10 @@ public class PantallaPrincipalMedico extends AppCompatActivity {
         Intent pantallaLogIn = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(pantallaLogIn);
         finish();
+    }
+
+    public void atenderEmergencias(View view) {
+        Intent pantallaEmergenciaMedico = new Intent(getApplicationContext(), EmergenciasMedico.class);
+        startActivity(pantallaEmergenciaMedico);
     }
 }

@@ -32,7 +32,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logowhitedoc" />
+                app:srcCompat="@drawable/logowhitedoc_transparente" />
 
             <ImageButton
                 android:id="@+id/btnSignOutCliente"
@@ -50,7 +50,7 @@
                 android:id="@+id/btn_aceptarCitas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/btn_pntPrincipalMedico_CitasXAcep"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
                 android:id="@+id/btn_pntPrincMedicPacientes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/btn_pntPrincipalMedico_Pacientes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -81,9 +81,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/img_logoPntMedicoPrinc" />
 
             <LinearLayout
+                android:id="@+id/linlay_pntPrincMedic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -113,6 +114,20 @@
                     android:text="@string/btn_pntPrincipalMedico_Perfil"
                     android:textSize="13sp" />
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_AtenderEmergencias"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="15dp"
+                android:onClick="atenderEmergencias"
+                android:text="@string/btn_atenderEmergencias"
+                android:backgroundTint="@color/colorTitles"
+                android:textColor="@color/colorLettersBtn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linlay_pntPrincMedic" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

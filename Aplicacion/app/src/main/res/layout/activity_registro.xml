@@ -21,7 +21,7 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logowhitedoc" />
+            app:srcCompat="@drawable/logowhitedoc_transparente" />
 
         <TextView
             android:id="@+id/textView7"
@@ -90,7 +90,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="140dp"
             android:backgroundTint="@color/colorTitles"
-            android:onClick="pantallaPrincipal"
             android:text="@string/btnRegistrarse"
             android:textAlignment="center"
             android:textColor="@color/colorLettersBtn"

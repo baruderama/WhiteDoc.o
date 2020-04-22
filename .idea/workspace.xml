@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0b733f9f-fb79-4f4b-9cdb-a36b1534ba88" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ActividadProgramarCita.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ActividadProgramarCita.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/calendarioCita.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/calendarioCita.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ui/login/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ui/login/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/model/cita.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/model/cita.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\Sir Sebas\StudioProjects\WhiteDocReal\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1apzLbUXAe5wLazVchM5mCMG0rZ" />
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0b733f9f-fb79-4f4b-9cdb-a36b1534ba88" name="Default Changelist" comment="" />
+      <created>1587447267570</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587447267570</updated>
+    </task>
+    <task id="LOCAL-00001">
+      <created>1587447850913</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587447850913</updated>
+    </task>
+    <task id="LOCAL-00002" summary="rama chat">
+      <created>1587447912966</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1587447912966</updated>
+    </task>
+    <task id="LOCAL-00003" summary="prueba2">
+      <created>1587450849509</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587450849509</updated>
+    </task>
+    <task id="LOCAL-00004" summary="lista de usuarios de la app+ pantalla de lista de chats">
+      <created>1587467199720</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587467199720</updated>
+    </task>
+    <task id="LOCAL-00005" summary="chat terminado">
+      <created>1587491269356</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1587491269356</updated>
+    </task>
+    <task id="LOCAL-00006" summary="chat terminado si quiere probar ponga que vaya a chat depues de iniciar sesión">
+      <created>1587511862979</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587511862979</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Ya puede crear citas">
+      <created>1587546599009</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1587546599009</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="rama chat" />
+    <MESSAGE value="prueba2" />
+    <MESSAGE value="lista de usuarios de la app+ pantalla de lista de chats" />
+    <MESSAGE value="chat terminado" />
+    <MESSAGE value="chat terminado si quiere probar ponga que vaya a chat depues de iniciar sesión" />
+    <MESSAGE value="Ya puede crear citas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ya puede crear citas" />
+  </component>
+</project>

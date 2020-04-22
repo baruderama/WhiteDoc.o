@@ -88,16 +88,14 @@ public class Registro extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-
         updateUI(currentUser);
     }
 
     private void registerUser(){
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(Registro.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-
                     Map<String, Object> map = new HashMap<>();
                     map.put("name", name);
                     map.put("email", email);
@@ -109,12 +107,12 @@ public class Registro extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task2) {
                             if(task2.isSuccessful()){
                                 Intent intent;
-                                if(type == "Médico"){
+                                if(type.equals("Médico")){
                                     intent = new Intent(getApplicationContext(), PantallaPrincipalMedico.class);
                                     startActivity(intent);
                                 }
                                 else{
-                                    if(type == "Paciente"){
+                                    if(type.equals("Paciente")){
                                         intent = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
                                         startActivity(intent);
                                     }
@@ -125,14 +123,14 @@ public class Registro extends AppCompatActivity {
                             }
                             else
                             {
-                                Toast.makeText(getApplicationContext(), "No fue posible crear los datos correctamente", Toast.LENGTH_SHORT);
+                                Toast.makeText(getApplicationContext(), "No fue posible crear los datos correctamente", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
 
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),"No se pudo registrar este usuario",Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(),"Este usuario ya está registrado",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -140,7 +138,7 @@ public class Registro extends AppCompatActivity {
     private void updateUI(FirebaseUser currentUser) {
         if(currentUser != null)
         {
-
+            mAuth.signOut();
         }
     }
 
