@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if(dataSnapshot.exists()){
                                             if(dataSnapshot.child("type").getValue().toString().equals("Médico")){
-                                                Intent pantallaPrincipal = new Intent(getApplicationContext(), Chat.class);
+                                                Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalMedico.class);
                                                 startActivity(pantallaPrincipal);
                                                 finish();
                                             }
