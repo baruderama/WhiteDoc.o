@@ -304,6 +304,9 @@ public class EmergenciaUsuario extends FragmentActivity implements OnMapReadyCal
                         if (!dataSnapshot.getValue().toString().equals("N/A")) {
                             medicoEncontrado(dataSnapshot.getValue().toString());
                         }
+                        else if(dataSnapshot.getValue().toString().equals("terminado")){
+                            cancelarEmergencia();
+                        }
                     }
                 }
 
