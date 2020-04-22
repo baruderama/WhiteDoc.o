@@ -128,6 +128,7 @@ public class Registro extends AppCompatActivity {
                                     intent.putExtra("name", name);
                                     intent.putExtra("email", email);
                                     intent.putExtra("password", password);
+                                    intent.putExtra("type", type);
                                     intent.putExtra("fecha", fechaNacimiento);
                                     startActivity(intent);
                                 }
