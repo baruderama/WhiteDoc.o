@@ -4,7 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -41,6 +45,14 @@ public class AceptarRechazarCitas extends AppCompatActivity {
 
         myListView=(ListView) findViewById(R.id.listview2);
         myListView.setAdapter(myArrayAdapter);
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent= new Intent(getApplicationContext(),DetalleCita.class);
+                intent.putExtra("correo",(String) adapterView.getItemAtPosition(i));
+                startActivity(intent);
+            }
+        });
         mRef= FirebaseDatabase.getInstance().getReference("Citas");
         mRef.addChildEventListener(new ChildEventListener() {
             @Override
