@@ -27,13 +27,13 @@ import java.util.List;
 
 import model.Chatlist;
 import model.User;
-import model.cita;
+//import model.cita;
 
 public class calendarioCita extends AppCompatActivity {
 
     FirebaseUser fuser;
-    private List<cita> citasList;
-    private cita cita;
+    //private List<Cita> citasList;
+    //private cita cita;
     EditText editText;
     CalendarView calendarView;
     ListView listView;

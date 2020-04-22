@@ -23,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import e.asus.whitedoc.AceptarRechazarCitas;
 import e.asus.whitedoc.ActividadProgramarCita;
 import e.asus.whitedoc.Chat;
 import e.asus.whitedoc.PantallaPrincipalMedico;
@@ -121,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
 
-                    Intent pantallaPrincipal = new Intent(getApplicationContext(), ActividadProgramarCita.class);
+                    Intent pantallaPrincipal = new Intent(getApplicationContext(), AceptarRechazarCitas.class);
                     startActivity(pantallaPrincipal);
 
             }

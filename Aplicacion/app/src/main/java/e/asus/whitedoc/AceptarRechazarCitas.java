@@ -4,16 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.LabeledIntent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,33 +19,38 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-import model.User;
+import model.Cita;
+//import model.User;
+//mport model.cita;
 
-public class ActividadProgramarCita extends AppCompatActivity {
+public class AceptarRechazarCitas extends AppCompatActivity {
 
     ListView myListView;
     ArrayList<String> myarrayList=new ArrayList<>();
     //ArrayList<String> myEmailList=new ArrayList<>();
     DatabaseReference mRef;
+    FirebaseUser fuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_actividad_programar_cita);
+        setContentView(R.layout.activity_aceptar_rechazar_citas);
 
-        final ArrayAdapter<String> myArrayAdapter=new ArrayAdapter<String>(ActividadProgramarCita.this, android.R.layout.simple_list_item_1,myarrayList);
+        final ArrayAdapter<String> myArrayAdapter=new ArrayAdapter<String>(AceptarRechazarCitas.this, android.R.layout.simple_list_item_1,myarrayList);
+        fuser= FirebaseAuth.getInstance().getCurrentUser();
 
-
-        myListView=(ListView) findViewById(R.id.listview1);
+        myListView=(ListView) findViewById(R.id.listview2);
         myListView.setAdapter(myArrayAdapter);
-
-        mRef= FirebaseDatabase.getInstance().getReference("Users");
+        mRef= FirebaseDatabase.getInstance().getReference("Citas");
         mRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                User user=dataSnapshot.getValue(User.class);
-                if(user.getType().equals("Médico")) {
-                    String value = user.getEmail();
+                Cita citica=dataSnapshot.getValue(Cita.class);
+
+                Toast.makeText(AceptarRechazarCitas.this, citica.getEmailUser(), Toast.LENGTH_LONG).show();
+
+                if(citica.getUsername().equals(fuser.getEmail())) {
+                    String value = citica.getEmailUser();
 
                     myarrayList.add(value);
 
@@ -76,27 +78,5 @@ public class ActividadProgramarCita extends AppCompatActivity {
 
             }
         });
-
-
-        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //adapterView.getItemAtPosition(i);
-                String userName= String.valueOf(adapterView.getItemAtPosition(i));
-                Toast.makeText(ActividadProgramarCita.this, userName, Toast.LENGTH_LONG).show();
-                Intent calendarioCita = new Intent(getApplicationContext(), calendarioCita.class);
-                calendarioCita.putExtra("username",userName);
-                startActivity(calendarioCita);
-
-            }
-
-
-        });
-
-
     }
-
-
-
-
 }
