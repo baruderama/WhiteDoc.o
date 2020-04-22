@@ -6,4 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".RegistroPaciente">
 
+    <ImageView
+        android:id="@+id/imgviewRegPacImg"
+        android:layout_width="158dp"
+        android:layout_height="168dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linlayRegPacBtns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@color/colorLettersBtn"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/imgviewRegPacImg"
+        tools:layout_editor_absoluteX="20dp">
+
+        <Button
+            android:id="@+id/btnRegPacSelFoto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:backgroundTint="@color/colorLettersBtn"
+            android:text="@string/btnSelecFoto"
+            android:textColor="@color/colorTitles"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnRegPacTomarFoto"
+            android:layout_width="29dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:backgroundTint="@color/colorLettersBtn"
+            android:text="@string/btnTomarFoto"
+            android:textColor="@color/colorTitles"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnRegPacSiguiente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/colorTitles"
+        android:text="@string/btnRegistrarse"
+        android:textColor="@color/colorLettersBtn"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/linlayRegPacBtns"
+        tools:layout_editor_absoluteX="14dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
