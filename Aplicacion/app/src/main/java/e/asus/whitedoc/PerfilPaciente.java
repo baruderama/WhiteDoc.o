@@ -41,7 +41,7 @@ public class PerfilPaciente extends AppCompatActivity {
         inflar();
     }
     public void inflar() {
-        //this.guardarCambios = findViewById(R.id.);
+        this.guardarCambios = findViewById(R.id.btn_perfilPacienteGuardar);
         this.nombrePaciente = findViewById(R.id.txt_perfilPacienteNombre);
         this.fechaNacPaciente = findViewById(R.id.txt_perfilPacienteFechNac);
         this.imgFotoPerfilPaciente = findViewById(R.id.img_perfilPacienteFoto);
@@ -50,14 +50,17 @@ public class PerfilPaciente extends AppCompatActivity {
         this.nombrePaciente.setEnabled(false);
         this.fechaNacPaciente.setText("22/06/1995");
         this.fechaNacPaciente.setEnabled(false);
+        this.guardarCambios.setEnabled(false);
     }
     public void editarNombrePaciente(View v) {
+        this.guardarCambios.setEnabled(true);
         this.nombrePaciente.setEnabled(true);
         this.nombrePaciente.setClickable(true);
         this.nombrePaciente.setFocusable(true);
         this.nombrePaciente.requestFocus();
     }
     public void editarFechaNacPaciente(View v) {
+        this.guardarCambios.setEnabled(true);
         this.fechaNacPaciente.setClickable(true);
         this.fechaNacPaciente.setEnabled(true);
         this.fechaNacPaciente.setFocusable(true);
@@ -68,14 +71,19 @@ public class PerfilPaciente extends AppCompatActivity {
         startActivity(pantallaRecordatorio);
     }
     public void cambiarFotoPerfilCamara(View v) {
+        this.guardarCambios.setEnabled(true);
         requestPermission(PerfilPaciente.this, CAMERA, "Es necesario para acceder a la cámara", PERMISSION_CAMERA );
         takePicture();
     }
     public void cambiarFotoPerfilGaleria(View v) {
+        this.guardarCambios.setEnabled(true);
         requestPermission(PerfilPaciente.this, READ_EXTERNAL_STORAGE, "Es necesario para acceder a la galeria", PERMISSION_GALERY );
         selectImage();
     }
     public void guardarPerfilPaciente(View v) {
+        this.guardarCambios.setEnabled(false);
+        this.fechaNacPaciente.setEnabled(false);
+        this.nombrePaciente.setEnabled(false);
         Toast.makeText(this, "Falta implementar ", Toast.LENGTH_SHORT).show();
     }
     /**

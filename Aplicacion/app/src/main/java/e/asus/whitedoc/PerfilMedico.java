@@ -50,6 +50,7 @@ public class PerfilMedico extends AppCompatActivity {
         this.especialidadMedico = findViewById(R.id.txt_perfilMedicoEspecialidad);
         this.imgFotoPerfilMedico = findViewById(R.id.img_perfilMedicoFoto);
         /* llenado inicial */
+        this.guardarCambios.setEnabled(false);
         this.nombreMedico.setText("Pepito");
         this.nombreMedico.setEnabled(false);
         this.fechaNacMedico.setText("22/06/1995");
@@ -58,24 +59,32 @@ public class PerfilMedico extends AppCompatActivity {
         this.especialidadMedico.setEnabled(false);
     }
     public void guardarPerfilMedico(View v) {
+        this.guardarCambios.setEnabled(false);
+        this.nombreMedico.setEnabled(false);
+        this.fechaNacMedico.setEnabled(false);
+        this.especialidadMedico.setEnabled(false);
         Toast.makeText(this, "Falta implementar ", Toast.LENGTH_SHORT).show();
     }
     public void cambiarFotoPerfilCamara(View v) {
+        this.guardarCambios.setEnabled(true);
         requestPermission(PerfilMedico.this, CAMERA, "Es necesario para acceder a la cámara", PERMISSION_CAMERA );
         takePicture();
     }
     public void cambiarFotoPerfilGaleria(View v) {
+        this.guardarCambios.setEnabled(true);
         requestPermission(PerfilMedico.this, READ_EXTERNAL_STORAGE, "Es necesario para acceder a la galeria", PERMISSION_GALERY );
         selectImage();
     }
 
     public void editarNombreMedico(View v) {
+        this.guardarCambios.setEnabled(true);
         this.nombreMedico.setEnabled(true);
         this.nombreMedico.setClickable(true);
         this.nombreMedico.setFocusable(true);
         this.nombreMedico.requestFocus();
     }
     public void editarEspecialidadMedico(View v) {
+        this.guardarCambios.setEnabled(true);
         this.especialidadMedico.setEnabled(true);
         this.especialidadMedico.setClickable(true);
         this.especialidadMedico.setFocusable(true);
@@ -83,12 +92,14 @@ public class PerfilMedico extends AppCompatActivity {
     }
 
     public void editarFechaNacMedico(View v) {
+        this.guardarCambios.setEnabled(true);
         this.fechaNacMedico.setEnabled(true);
         this.fechaNacMedico.setClickable(true);
         this.fechaNacMedico.setFocusable(true);
         this.fechaNacMedico.requestFocus();
     }
     public void editarUbicacionConsMedico(View v) {
+        this.guardarCambios.setEnabled(true);
         Toast.makeText(this,"Falta implementar", Toast.LENGTH_SHORT).show();
     }
 
