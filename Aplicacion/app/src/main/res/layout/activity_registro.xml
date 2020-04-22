@@ -12,11 +12,13 @@
         android:background="#FFFFFF"
         tools:context=".Registro">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/imageView3"
-            android:layout_width="194dp"
-            android:layout_height="122dp"
+            android:layout_width="149dp"
+            android:layout_height="123dp"
             android:layout_marginTop="100dp"
+            android:background="@drawable/logowhitedoc"
+            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,8 +71,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="@+id/editTxtRegPass"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/editTxtRegPass"
-            app:layout_constraintTop_toBottomOf="@+id/editTxtRegPass" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
         <EditText
             android:id="@+id/editTxtRegPass"
@@ -84,13 +87,47 @@
             app:layout_constraintStart_toStartOf="@+id/editTxtRegMail"
             app:layout_constraintTop_toBottomOf="@+id/editTxtRegMail" />
 
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTxtRegPass"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/editTxtRegPass"
+            app:layout_constraintStart_toStartOf="@+id/editTxtRegPass"
+            app:layout_constraintTop_toBottomOf="@+id/editTxtRegPass">
+
+            <TextView
+                android:id="@+id/txtRegFechaNac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.5"
+                android:backgroundTint="#FFFFFF"
+                android:hint="@string/txt_fecha_nacimiento"
+                android:inputType="date"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/imgbtnRegDatePicker"
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="0dp"
+                android:layout_weight="0.5"
+                android:gravity="right"
+                app:srcCompat="@drawable/calendar" />
+
+        </LinearLayout>
+
         <Button
             android:id="@+id/btnRegRegistro"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="140dp"
             android:backgroundTint="@color/colorTitles"
-            android:text="@string/btnRegistrarse"
+            android:onClick="pantallaPrincipal"
+            android:text="@string/txt_siguiente"
             android:textAlignment="center"
             android:textColor="@color/colorLettersBtn"
             android:textSize="18sp"
@@ -99,5 +136,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/spnRegTipo"
             app:layout_constraintTop_toBottomOf="@+id/spnRegTipo" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
