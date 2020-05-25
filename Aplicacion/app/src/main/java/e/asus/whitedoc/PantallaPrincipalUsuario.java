@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -28,8 +27,8 @@ public class PantallaPrincipalUsuario extends AppCompatActivity {
     }
 
     public void modificarMedicamentos(View v) {
-        Intent pantallaAgregar = new Intent(getApplicationContext(), ModificarMedicamentos.class);
-        startActivity(pantallaAgregar);
+        Intent pantallaListaMedicamentos = new Intent(getApplicationContext(), ListaMedicamentos.class);
+        startActivity(pantallaListaMedicamentos);
     }
 
     public void verPerfil(View v) {

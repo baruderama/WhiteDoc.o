@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class GestionMedicamentos extends AppCompatActivity {
+public class ListaMedicamentos extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gestion_medicamentos);
+        setContentView(R.layout.activity_lista_medicamentos);
     }
 }

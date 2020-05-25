@@ -4,22 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AceptarRechazarCitas">
+    tools:context=".ListaMedicamentos">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar1"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/darkRed"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/MenuStyle">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/acepta_rechaza_citas"
+            android:text="@string/titleMedCliente"
+            android:textColor="@color/colorLettersBtn"
             android:textStyle="bold"
             android:textSize="20sp"
             android:textAlignment="center"/>
+
+        <Button
+            android:layout_height="35dp"
+            android:layout_width="35dp"
+            android:background="@color/darkRed"
+            android:gravity="end"
+            />
     </androidx.appcompat.widget.Toolbar>
 
     <ListView

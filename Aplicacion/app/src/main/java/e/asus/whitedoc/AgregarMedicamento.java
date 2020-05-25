@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class ModificarMedicamentos extends AppCompatActivity {
+public class AgregarMedicamento extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +15,7 @@ public class ModificarMedicamentos extends AppCompatActivity {
     }
 
     public void gestionMedicamento(View v) {
-        Intent pantallaGestion = new Intent(getApplicationContext(), GestionMedicamentos.class);
+        Intent pantallaGestion = new Intent(getApplicationContext(), ListaMedicamentos.class);
         startActivity(pantallaGestion);
     }
 }

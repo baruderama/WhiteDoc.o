@@ -57,8 +57,8 @@
         <activity android:name=".PantallaPrincipalUsuario" />
         <activity android:name=".Registro" />
         <activity android:name=".ConsultarCitasPersona" />
-        <activity android:name=".ModificarMedicamentos" />
-        <activity android:name=".GestionMedicamentos" />
+        <activity android:name=".AgregarMedicamento" />
+        <activity android:name=".ListaMedicamentos" />
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".PantallaCarga"
