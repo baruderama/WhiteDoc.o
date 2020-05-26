@@ -27,7 +27,7 @@ public class PantallaPrincipalUsuario extends AppCompatActivity {
     }
 
     public void modificarMedicamentos(View v) {
-        Intent pantallaListaMedicamentos = new Intent(getApplicationContext(), ListaMedicamentos.class);
+        Intent pantallaListaMedicamentos = new Intent(getApplicationContext(), MedicamentosPersona.class);
         startActivity(pantallaListaMedicamentos);
     }
 

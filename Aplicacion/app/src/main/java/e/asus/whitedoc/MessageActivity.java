@@ -151,7 +151,7 @@ public class MessageActivity extends AppCompatActivity {
                             chat.getReceiver().equals(userid) && chat.getSender().equals(myid)){
                         mChat.add(chat);
                     }
-                    messageAdapter=new MessageAdapter(MessageActivity.this,mChat,imageurl);
+                    messageAdapter=new MessageAdapter(MessageActivity.this, mChat, imageurl);
                     recyclerView.setAdapter(messageAdapter);
                 }
             }

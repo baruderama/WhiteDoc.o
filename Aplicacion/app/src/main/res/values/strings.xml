@@ -91,4 +91,5 @@
     <string name="horario_medicamento">Horario:</string>
     <string name="acepta_rechaza_citas">Acepta o Rechaza Citas</string>
     <string name="titleMedCliente">Medicamentos</string>
+    <string name="btnAdd">+</string>
 </resources>

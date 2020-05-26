@@ -58,7 +58,7 @@
         <activity android:name=".Registro" />
         <activity android:name=".ConsultarCitasPersona" />
         <activity android:name=".AgregarMedicamento" />
-        <activity android:name=".ListaMedicamentos" />
+        <activity android:name=".MedicamentosPersona" />
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".PantallaCarga"
