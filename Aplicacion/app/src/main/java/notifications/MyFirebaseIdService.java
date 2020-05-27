@@ -16,11 +16,11 @@ public class MyFirebaseIdService extends FirebaseMessagingService{
     @Override
     public void onNewToken(@NonNull String s) {
         super.onNewToken(s);
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        String refreshToken =FirebaseInstanceId.getInstance().getToken();
-        if(firebaseUser!=null){
-            updateToken(refreshToken);
-        }
+        //FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        //String refreshToken =FirebaseInstanceId.getInstance().getToken();
+        //if(firebaseUser!=null){
+            updateToken(s);
+        //}
     }
 
     private void updateToken(String refreshToken) {
