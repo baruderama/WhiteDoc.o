@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,11 +40,13 @@ public class MedicamentosPersona extends AppCompatActivity {
     private Instant fechaModificacion;
     private ListView lista;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_medicamentos);
         lista = findViewById(R.id.lista_medicamentos);
+        Log.i("RESTA", Instant.now().toString());
 
         medicamentos = new ArrayList<>();
         fechaModificacion = null;
@@ -65,6 +68,7 @@ public class MedicamentosPersona extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getBaseContext(), ModificarMedicamento.class);
                 intent.putExtra("medicamento", medicamentos.get(position));
+                intent.putExtra("posicion", position);
                 startActivityForResult(intent, 2);
             }
         });
@@ -79,33 +83,18 @@ public class MedicamentosPersona extends AppCompatActivity {
                 if(!dataSnapshot.exists()) {
                     return;
                 }
-                Instant ultimaModificacion = Instant.parse(Objects.requireNonNull(dataSnapshot.child("fecha").getValue()).toString());
+                Instant ultimaModificacion = Instant.ofEpochSecond((Long) dataSnapshot.child("fecha").child("epochSecond").getValue());
                 if(fechaModificacion != null && fechaModificacion.isAfter(ultimaModificacion)) {
-                    Map<String, Object> map = new HashMap<>();
-                    Map<String, Object> meds = new HashMap<>();
-                    map.put("fecha", fechaModificacion.toString());
-                    for(Medicamento medicamento: medicamentos) {
-                        meds.put(medicamento.getNombre(), medicamento);
-                    }
-                    map.put("Medicamentos", meds);
-                    String id = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-                    FirebaseDatabase.getInstance().getReference("Recetas").child(id).setValue(new OnCompleteListener() {
-                        @Override
-                        public void onComplete(@NonNull Task task) {
-                            if(task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(), "Medicamentos actualizados en la base de datos", Toast.LENGTH_SHORT);
-                            }
-                            else {
-                                Toast.makeText(getApplicationContext(), "No se pudieron actualizar los medicamentos", Toast.LENGTH_SHORT);
-                            }
-                        }
-                    });
-
+                    actualizarMedicamentosFirebase();
                 }
                 else {
                     List<Medicamento> nuevosMedicamentos = new ArrayList<>();
                     for (DataSnapshot nuevo: dataSnapshot.child("Medicamentos").getChildren()) {
-                        nuevosMedicamentos.add((Medicamento) nuevo.getValue());
+                        Medicamento med = new Medicamento(nuevo.child("nombre").getValue().toString(),
+                                nuevo.child("descripcion").getValue().toString(),
+                                Instant.ofEpochSecond((Long) nuevo.child("horario").child("epochSecond").getValue()),
+                                ( (Long) nuevo.child("periodo").getValue()).intValue());
+                        nuevosMedicamentos.add(med);
                     }
                     medicamentos = nuevosMedicamentos;
                     fechaModificacion = ultimaModificacion;
@@ -137,6 +126,29 @@ public class MedicamentosPersona extends AppCompatActivity {
         startActivityForResult(pantallaAgregarMedicamento, 1);
     }
 
+    void actualizarMedicamentosFirebase() {
+        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> meds = new HashMap<>();
+        map.put("fecha", fechaModificacion);
+        for(Medicamento medicamento: medicamentos) {
+            meds.put(medicamento.getNombre(), medicamento);
+        }
+        map.put("Medicamentos", meds);
+        String id = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        FirebaseDatabase.getInstance().getReference("Recetas").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                if(task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "Medicamentos actualizados en la base de datos", Toast.LENGTH_SHORT);
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "No se pudieron actualizar los medicamentos", Toast.LENGTH_SHORT);
+                }
+            }
+        });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -146,20 +158,20 @@ public class MedicamentosPersona extends AppCompatActivity {
                 Medicamento nuevo = (Medicamento) extras.get("medicamento");
                 if(nuevo!=null) {
                     medicamentos.add(nuevo);
+                    fechaModificacion = Instant.now();
                     actualizarPantalla();
+                    actualizarMedicamentosFirebase();
                 }
             }
-            else if(requestCode == 2){ // Modificar medicamento
+            else if(requestCode == 2) { // Modificar medicamento
                 Bundle extras = data.getExtras();
                 Medicamento nuevo = (Medicamento) extras.get("medicamento");
+                int posicion = (int) extras.get("posicion");
                 if(nuevo!=null) {
-                    for(Medicamento medicamento: medicamentos) {
-                        if(medicamento.getNombre().equals(nuevo.getNombre())) {
-                            medicamento = nuevo;
-                            break;
-                        }
-                    }
+                    medicamentos.remove(posicion);
+                    medicamentos.add(posicion, nuevo);
                     actualizarPantalla();
+                    actualizarMedicamentosFirebase();
                 }
             }
         }

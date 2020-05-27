@@ -4,18 +4,22 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.time.Instant;
+import java.util.Calendar;
 
 import e.asus.whitedoc.data.model.ListaMedicamentos;
 import e.asus.whitedoc.data.model.Medicamento;
@@ -23,7 +27,8 @@ import e.asus.whitedoc.data.model.Medicamento;
 public class AgregarMedicamento extends AppCompatActivity {
     private EditText editNombre;
     private EditText editDescripcion;
-    private TimePicker timePrimeraDosis;
+    private EditText editPrimeraDosis;
+    private EditText editDiaInicio;
     private Spinner spinPeriodo;
     private Button btnGuardar;
 
@@ -43,12 +48,13 @@ public class AgregarMedicamento extends AppCompatActivity {
     private void inject() {
         editNombre = (EditText) findViewById(R.id.editNombreMed);
         editDescripcion = (EditText) findViewById(R.id.editDescripcionMed);
-        timePrimeraDosis = (TimePicker) findViewById(R.id.timePrimeraDosis);
+        editPrimeraDosis = (EditText) findViewById(R.id.editPrimeraDosis);
+        editDiaInicio = (EditText) findViewById(R.id.editDiaInicio);
         spinPeriodo = (Spinner) findViewById(R.id.spinnerPeriodoMed);
         btnGuardar = (Button) findViewById(R.id.btnGuardarMed);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.spinner_registro, android.R.layout.simple_spinner_item);
+                R.array.spinner_medicamento, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -69,11 +75,6 @@ public class AgregarMedicamento extends AppCompatActivity {
         return true;
     }
 
-    public void gestionMedicamento(View v) {
-        Intent pantallaGestion = new Intent(getApplicationContext(), MedicamentosPersona.class);
-        startActivity(pantallaGestion);
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -83,26 +84,26 @@ public class AgregarMedicamento extends AppCompatActivity {
     public void informarMedicamento(View view) {
         String nombre = editNombre.getText().toString();
         String descripcion = editDescripcion.getText().toString();
-        Instant primeraDosis = Instant.parse(timePrimeraDosis.get.toString());
+        Instant primeraDosis = Instant.parse(editDiaInicio.getText() + "T"+ editPrimeraDosis.getText()+ ":00.00Z");
         Integer horasPeriodo = null;
-        if(spinPeriodo.getSelectedItem().equals("Cada 4 horas"))
+        if(spinPeriodo.getSelectedItemPosition() == 0)
             horasPeriodo = 4;
-        else if(spinPeriodo.getSelectedItem().equals("Cada 6 horas"))
+        else if(spinPeriodo.getSelectedItemPosition() == 1)
             horasPeriodo = 6;
-        else if(spinPeriodo.getSelectedItem().equals("Cada 8 horas"))
-            horasPeriodo = 10;
-        else if(spinPeriodo.getSelectedItem().equals("Cada 12 horas"))
+        else if(spinPeriodo.getSelectedItemPosition() == 2)
+            horasPeriodo = 8;
+        else if(spinPeriodo.getSelectedItemPosition() == 3)
             horasPeriodo = 12;
-        else if(spinPeriodo.getSelectedItem().equals("Cada 24 horas"))
+        else if(spinPeriodo.getSelectedItemPosition() == 4)
             horasPeriodo = 24;
-        else if(spinPeriodo.getSelectedItem().equals("Cada 48 horas"))
+        else if(spinPeriodo.getSelectedItemPosition() == 5)
             horasPeriodo = 48;
-        else if(spinPeriodo.getSelectedItem().equals("Cada 72 horas"))
+        else if(spinPeriodo.getSelectedItemPosition() == 6)
             horasPeriodo = 72;
-        else if(spinPeriodo.getSelectedItem().equals("Una vez a la semana"))
-            horasPeriodo = 189;
-        else if(spinPeriodo.getSelectedItem().equals("Una vez cada 4 semanas"))
-            horasPeriodo = 758;
+        else if(spinPeriodo.getSelectedItemPosition() == 7)
+            horasPeriodo = 168;
+        else if(spinPeriodo.getSelectedItemPosition() == 8)
+            horasPeriodo = 672;
 
         if(medicamentoEsValido(nombre, descripcion, primeraDosis, horasPeriodo)) {
             Intent intent=new Intent();
@@ -110,5 +111,47 @@ public class AgregarMedicamento extends AppCompatActivity {
             setResult(RESULT_OK, intent);
             finish();//finishing activity
         }
+    }
+
+    public void pedirHora(View view) {
+        // Get Current Time
+        final Calendar c = Calendar.getInstance();
+        int mHour = c.get(Calendar.HOUR_OF_DAY);
+        int mMinute = c.get(Calendar.MINUTE);
+
+        // Launch Time Picker Dialog
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay,
+                                          int minute) {
+
+                        editPrimeraDosis.setText(String.format("%02d", hourOfDay) + ":" + String.format("%02d", minute));
+                    }
+                }, mHour, mMinute, false);
+        timePickerDialog.show();
+    }
+
+    public void pedirFecha(View view) {
+        // Get Current Date
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+
+                        editDiaInicio.setText(String.format("%04d", year) + "-" + String.format("%02d", (monthOfYear + 1)) + "-" + String.format("%02d", dayOfMonth));
+
+                    }
+                }, mYear, mMonth, mDay);
+        datePickerDialog.show();
     }
 }

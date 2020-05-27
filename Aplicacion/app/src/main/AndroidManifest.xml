@@ -46,6 +46,7 @@
         <activity android:name=".AceptarRechazarCitas" />
         <activity android:name=".calendarioCita" />
         <activity android:name=".ActividadProgramarCita" />
+        <activity android:name=".ModificarMedicamento" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".Chat" />
         <activity android:name=".PantallaPrincipalMedico" />

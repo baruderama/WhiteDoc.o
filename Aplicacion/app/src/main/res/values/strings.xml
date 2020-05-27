@@ -107,4 +107,8 @@
     <string name="btnAdd">+</string>
     <string name="txtPeriodoMed">Periodo:</string>
     <string name="txtPDosisMed">Primera dosis:</string>
+    <string name="txtDiaInicio">Dia de inicio:</string>
+    <string name="fecha">Fecha</string>
+    <string name="hora">Hora</string>
+    <string name="guardar_cambios">Guardar Cambios</string>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AgregarMedicamento">
+    tools:context=".ModificarMedicamento">
 
     <ImageView
         android:id="@+id/imageView"
@@ -122,8 +122,8 @@
         android:layout_height="42dp"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:inputType="datetime"
         android:onClick="pedirHora"
+        android:inputType="datetime"
         app:layout_constraintStart_toStartOf="@+id/editDiaInicio"
         app:layout_constraintTop_toBottomOf="@+id/editDiaInicio" />
 
@@ -160,13 +160,13 @@
         app:layout_constraintTop_toBottomOf="@+id/editPrimeraDosis" />
 
     <Button
-        android:id="@+id/btnGuardarMed"
+        android:id="@+id/btnGuardarCambiosMed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:layout_marginBottom="172dp"
-        android:onClick="informarMedicamento"
-        android:text="@string/guardar_medicamento"
+        android:onClick="guardarCambiosMedicamento"
+        android:text="@string/guardar_cambios"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.445"
