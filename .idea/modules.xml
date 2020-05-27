@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/WhiteDocReal.iml" filepath="$PROJECT_DIR$/.idea/modules/WhiteDocReal.iml" group="WhiteDocReal" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/WhiteDocNotifi.iml" filepath="$PROJECT_DIR$/.idea/modules/WhiteDocNotifi.iml" group="WhiteDocNotifi" />
     </modules>
   </component>
 </project>
