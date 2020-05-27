@@ -131,6 +131,7 @@ public class RegistroMedico extends AppCompatActivity {
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                requestPermission(Manifest.permission.CAMERA, "Es necesario para acceder a la cámara", MY_PERMISSIONS_REQUEST_CAMERA );
                 if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)  == PackageManager.PERMISSION_GRANTED) {
                     takePicture();
                 }
@@ -140,19 +141,45 @@ public class RegistroMedico extends AppCompatActivity {
         btnSelPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                requestPermission( Manifest.permission.READ_EXTERNAL_STORAGE, "Es necesario para acceder a la cámara", MY_PERMISSIONS_REQUEST_GALLERY );
                 if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE)  == PackageManager.PERMISSION_GRANTED) {
                     loadImage();
                 }
             }
         });
-        int permissionCheck;
-        permissionCheck =
-                ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA);
-        requestPermission(this, Manifest.permission.CAMERA, "Es necesario para acceder a la cámara", MY_PERMISSIONS_REQUEST_CAMERA );
+//        int permissionCheck;
+//        permissionCheck =
+//                ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA);
+
 
         recibirDatos();
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
+    {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CAMERA: {
+// If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+// permission was granted, continue with task related to permission
+                    takePicture();
+                }
+            }
+            break;
+            case MY_PERMISSIONS_REQUEST_GALLERY: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+// permission was granted, continue with task related to permission
+                    loadImage();
+                }
+            }
+            break;
+// other 'case' lines to check for other
+// permissions this app might request
+        }
+    }
     private void recibirDatos(){
             Bundle extras = getIntent().getExtras();
             name = extras.getString("name");
@@ -175,16 +202,15 @@ public class RegistroMedico extends AppCompatActivity {
         }
     }
 
-    private void requestPermission(Activity context, String permiso, String justificacion, int idCode) {
-        if (ContextCompat.checkSelfPermission(context, permiso) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(context, permiso)) {
+    private void requestPermission(String permiso, String justificacion, int idCode) {
+        if (ContextCompat.checkSelfPermission(this, permiso) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permiso)) {
                 // Show an expanation to the user *asynchronously*Â  Â
-                Toast.makeText(context, justificacion, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, justificacion, Toast.LENGTH_LONG).show();
             }
 
             // request the permission.Â  Â
-            ActivityCompat.requestPermissions(context, new String[]{permiso}, idCode);
-
+            ActivityCompat.requestPermissions(this, new String[]{permiso}, idCode);
         }
     }
 
@@ -196,6 +222,7 @@ public class RegistroMedico extends AppCompatActivity {
 
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+            chgedImgView.setBackground(null);
             chgedImgView.setImageBitmap(imageBitmap);
             extras = data.getExtras();
 
@@ -227,6 +254,7 @@ public class RegistroMedico extends AppCompatActivity {
         else {
             if (requestCode == MY_PERMISSIONS_REQUEST_GALLERY && resultCode == RESULT_OK) {
                 Uri uri = data.getData();
+                chgedImgView.setBackground(null);
                 chgedImgView.setImageURI(uri);
                 StorageReference filePath = mStorage.child("fotos").child(uri.getLastPathSegment()+ ".jpeg");
                 mCurrentPhotoPath = uri.getLastPathSegment()+ ".jpeg";
@@ -252,8 +280,6 @@ public class RegistroMedico extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        requestPermission(this, Manifest.permission.CAMERA, "Es necesario para acceder a la cámara", MY_PERMISSIONS_REQUEST_CAMERA );
-        requestPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE, "Es necesario para mostrar los contactos", MY_PERMISSIONS_REQUEST_CAMERA );
     }
 
 }
