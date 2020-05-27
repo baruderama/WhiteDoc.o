@@ -35,16 +35,18 @@ public class Utils {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static ListaMedicamentos obtenerMedicamentosArchivo(Context baseContext) {
         String[] jsongString = readFromFile(baseContext).split("\\s");
+        if(jsongString != null && jsongString.length > 4){
+            List<Medicamento> auxMedicamentos = new ArrayList<>();
 
-        List<Medicamento> auxMedicamentos = new ArrayList<>();
-
-        for (int i = 1; i<jsongString.length; i+=4){
-            auxMedicamentos.add(new Medicamento(jsongString[i],jsongString[i+1],Instant.parse(jsongString[i+2]),Integer.valueOf(jsongString[i+3])));
-            Log.i("LOCATION", auxMedicamentos.get(i).toString() );
+            for (int i = 1; i<jsongString.length; i+=4){
+                auxMedicamentos.add(new Medicamento(jsongString[i],jsongString[i+1],Instant.parse(jsongString[i+2]),Integer.valueOf(jsongString[i+3])));
+                Log.i("LOCATION", auxMedicamentos.get(i).toString() );
+            }
+            ListaMedicamentos medicamentosGuardados = new ListaMedicamentos(Instant.parse(jsongString[0]), auxMedicamentos);
+            Log.i("LOCATION", jsongString[0] );
+            return medicamentosGuardados;
         }
-        ListaMedicamentos medicamentosGuardados = new ListaMedicamentos(Instant.parse(jsongString[0]), auxMedicamentos);
-        Log.i("LOCATION", jsongString[0] );
-        return medicamentosGuardados;
+        return null;
     }
 
     private static void writeJSONObject(ListaMedicamentos medicamentosLista, Context baseContext){
@@ -97,6 +99,8 @@ public class Utils {
             Log.e("login activity", "File not found: " + e.toString());
         } catch (IOException e) {
             Log.e("login activity", "Can not read file: " + e.toString());
+        } catch (NullPointerException e){
+            return null;
         }
         finally {
 //            try {
