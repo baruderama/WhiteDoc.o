@@ -57,18 +57,29 @@
         <activity android:name=".PantallaPrincipalUsuario" />
         <activity android:name=".Registro" />
         <activity android:name=".ConsultarCitasPersona" />
+<<<<<<< Updated upstream
         <activity android:name=".ModificarMedicamentos" />
         <activity android:name=".GestionMedicamentos" />
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".PantallaCarga"
             android:label="@string/app_name" >
+=======
+        <activity android:name=".AgregarMedicamento" />
+        <activity android:name=".MedicamentosPersona">
+>>>>>>> Stashed changes
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" android:label="@string/app_name" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity"/>
+        <activity
+            android:name=".PantallaCarga"
+            />
+
+<!--        </activity>-->
     </application>
 
 </manifest>
