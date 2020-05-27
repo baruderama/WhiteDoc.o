@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b733f9f-fb79-4f4b-9cdb-a36b1534ba88" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/WhiteDocReal.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ActividadProgramarCita.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ActividadProgramarCita.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/calendarioCita.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/calendarioCita.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ui/login/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/e/asus/whitedoc/ui/login/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aplicacion/app/src/main/java/model/cita.java" beforeDir="false" afterPath="$PROJECT_DIR$/Aplicacion/app/src/main/java/model/cita.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +49,7 @@
   <component name="ProjectId" id="1apzLbUXAe5wLazVchM5mCMG0rZ" />
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Aplicacion" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
