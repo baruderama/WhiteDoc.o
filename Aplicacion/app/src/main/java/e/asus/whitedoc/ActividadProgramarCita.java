@@ -27,7 +27,7 @@ import model.User;
 public class ActividadProgramarCita extends AppCompatActivity {
 
     ListView myListView;
-    ArrayList<String> myarrayList=new ArrayList<>();
+    ArrayList<String> myarrayList = new ArrayList<>();
     //ArrayList<String> myEmailList=new ArrayList<>();
     DatabaseReference mRef;
 

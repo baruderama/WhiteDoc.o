@@ -23,8 +23,8 @@ public class PantallaPrincipalUsuario extends AppCompatActivity {
     }
 
     public void verCitas(View v) {
-        Intent pantallaPersona = new Intent(getApplicationContext(), ConsultarCitasPersona.class);
-        startActivity(pantallaPersona);
+        Intent pantallaPaciente = new Intent(getApplicationContext(), ConsultarCitasPacienteActivity.class);
+        startActivity(pantallaPaciente);
     }
 
     public void modificarMedicamentos(View v) {
