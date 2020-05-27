@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import e.asus.whitedoc.helper.Utils;
+
 public class PantallaPrincipalUsuario extends AppCompatActivity {
 
     @Override
@@ -49,6 +51,8 @@ public class PantallaPrincipalUsuario extends AppCompatActivity {
 
     public void signOut(View view) {
         FirebaseAuth.getInstance().signOut();
+        Utils.eraseFile(getBaseContext());
+        Utils.eliminarTipoUsuario(getBaseContext());
         Intent pantallaLogIn = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(pantallaLogIn);
         finish();

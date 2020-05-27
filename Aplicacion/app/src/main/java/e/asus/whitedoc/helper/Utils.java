@@ -5,7 +5,14 @@ import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 
@@ -21,6 +28,7 @@ import java.io.Writer;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import model.ListaMedicamentos;
 import model.Medicamento;
@@ -112,4 +120,93 @@ public class Utils {
 
         return ret;
     }
+
+    public static boolean eraseFile(Context baseContext) {
+        File file = new File(baseContext.getFilesDir(), "medicamentos.json");
+        return file.delete();
+    }
+
+    public static void crearArchivo(final Context baseContext) {
+        String id = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        FirebaseDatabase.getInstance().getReference("Recetas").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.exists()) {
+                    return;
+                }
+                Instant ultimaModificacion = Instant.ofEpochSecond((Long) dataSnapshot.child("fecha").child("epochSecond").getValue());
+                List<Medicamento> nuevosMedicamentos = new ArrayList<>();
+                for (DataSnapshot nuevo: dataSnapshot.child("Medicamentos").getChildren()) {
+                    Medicamento med = new Medicamento(nuevo.child("nombre").getValue().toString(),
+                            nuevo.child("descripcion").getValue().toString(),
+                            Instant.ofEpochSecond((Long) nuevo.child("horario").child("epochSecond").getValue()),
+                            ((Long) nuevo.child("periodo").getValue()).intValue());
+                    nuevosMedicamentos.add(med);
+                }
+                ListaMedicamentos meds = new ListaMedicamentos(ultimaModificacion, nuevosMedicamentos);
+                writeJSONObject(meds, baseContext);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    public static void guardarTipoUsuarioPaciente(Context baseContext) {
+        try {
+            File file = new File(baseContext.getFilesDir(), "tipoUsuario.json");
+            Writer output = new BufferedWriter(new FileWriter(file));
+            output.write("Paciente");
+            output.close();
+        } catch (Exception e) {
+            //Log error
+        }
+    }
+
+    public static void guardarTipoUsuarioMedico(Context baseContext) {
+        try {
+            File file = new File(baseContext.getFilesDir(), "tipoUsuario.json");
+            Writer output = new BufferedWriter(new FileWriter(file));
+            output.write("Médico");
+            output.close();
+        } catch (Exception e) {
+            //Log error
+        }
+    }
+
+    public static String leerTipoUsuario(Context baseContext) {
+        String ret = null;
+        InputStream inputStream = null;
+        File file = new File(baseContext.getFilesDir(), "tipoUsuario.json");
+        try {
+            FileReader fileReader = null;
+
+            fileReader = new FileReader(file);
+
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String receiveString = "";
+            StringBuilder stringBuilder = new StringBuilder();
+
+            while ((receiveString = bufferedReader.readLine()) != null) {
+                stringBuilder.append(receiveString);
+            }
+
+            ret = stringBuilder.toString().trim();
+            bufferedReader.close();
+            //}
+        } catch (Exception e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        }
+        return ret;
+    }
+
+    public static boolean eliminarTipoUsuario(Context baseContext) {
+        File file = new File(baseContext.getFilesDir(), "tipoUsuario.json");
+        return file.delete();
+    }
+
 }

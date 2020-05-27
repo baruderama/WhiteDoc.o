@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import e.asus.whitedoc.helper.Utils;
+
 public class PantallaCarga extends AppCompatActivity {
 
     @Override
@@ -29,39 +31,16 @@ public class PantallaCarga extends AppCompatActivity {
             finish();
         }
         else {
-            FirebaseDatabase.getInstance().getReference("Users").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.exists()){
-                        if(dataSnapshot.child("type").getValue().toString().equals("Médico")){
-                            Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalMedico.class);
-                            startActivity(pantallaPrincipal);
-                            finish();
-                        }
-                        else
-                        {
-                            if(dataSnapshot.child("type").getValue().toString().equals("Paciente")){
-                                Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
-                                startActivity(pantallaPrincipal);
-                                finish();
-                            }
-                        }
-                    }
-                    else {
-                        Intent pantallaLogIn = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(pantallaLogIn);
-                        finish();
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Intent pantallaLogIn = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(pantallaLogIn);
+            if(Utils.leerTipoUsuario(getBaseContext()).equals("Médico")) {
+                Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalMedico.class);
+                startActivity(pantallaPrincipal);
+                finish();
+            }
+            else if(Utils.leerTipoUsuario(getBaseContext()).equals("Paciente")) {
+                    Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
+                    startActivity(pantallaPrincipal);
                     finish();
-                }
-            });
+            }
         }
     }
-
 }

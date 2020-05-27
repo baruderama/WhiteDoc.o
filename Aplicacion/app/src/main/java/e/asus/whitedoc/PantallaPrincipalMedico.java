@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import e.asus.whitedoc.helper.Utils;
+
 public class PantallaPrincipalMedico extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,8 @@ public class PantallaPrincipalMedico extends AppCompatActivity {
 
     public void signOut(View view) {
         FirebaseAuth.getInstance().signOut();
+        Utils.eraseFile(getBaseContext());
+        Utils.eliminarTipoUsuario(getBaseContext());
         Intent pantallaLogIn = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(pantallaLogIn);
         finish();

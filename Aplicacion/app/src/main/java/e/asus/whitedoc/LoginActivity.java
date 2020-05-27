@@ -43,6 +43,7 @@ import e.asus.whitedoc.PantallaPrincipalMedico;
 import e.asus.whitedoc.PantallaPrincipalUsuario;
 import e.asus.whitedoc.R;
 import e.asus.whitedoc.Registro;
+import e.asus.whitedoc.helper.Utils;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -124,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if(dataSnapshot.exists()){
                                             if(dataSnapshot.child("type").getValue().toString().equals("Médico")){
+                                                Utils.guardarTipoUsuarioMedico(getBaseContext());
                                                 Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalMedico.class);
                                                 startActivity(pantallaPrincipal);
                                                 finish();
@@ -131,6 +133,8 @@ public class LoginActivity extends AppCompatActivity {
                                             else
                                             {
                                                 if(dataSnapshot.child("type").getValue().toString().equals("Paciente")){
+                                                    Utils.crearArchivo(getBaseContext());
+                                                    Utils.guardarTipoUsuarioPaciente(getBaseContext());
                                                     Intent pantallaPrincipal = new Intent(getApplicationContext(), PantallaPrincipalUsuario.class);
                                                     startActivity(pantallaPrincipal);
                                                     finish();
