@@ -181,13 +181,13 @@ public class ModificarMedicamento extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "No se puede cambiar el medicamento con estos datos", Toast.LENGTH_SHORT);
             return false;
         }
-        if(nombre.equals(medicamento.getNombre())) {
-            Toast.makeText(getApplicationContext(), "No se puede cambiar el medicamento con estos datos", Toast.LENGTH_SHORT);
-            return false;
-        }
         return true;
     }
 
     public void eliminarMedicamento(View view) {
+        Intent intent=new Intent();
+        setResult(RESULT_FIRST_USER, intent);
+        intent.putExtra("posicion", posicion);
+        finish();//finishing activity
     }
 }

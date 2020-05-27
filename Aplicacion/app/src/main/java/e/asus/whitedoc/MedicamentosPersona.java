@@ -157,14 +157,26 @@ public class MedicamentosPersona extends AppCompatActivity {
                 }
             }
             else if(requestCode == 2) { // Modificar medicamento
-                Bundle extras = data.getExtras();
-                Medicamento nuevo = (Medicamento) extras.get("medicamento");
-                int posicion = (int) extras.get("posicion");
-                if(nuevo!=null) {
+                if(resultCode == RESULT_FIRST_USER) {
+                    Bundle extras = data.getExtras();
+                    Medicamento nuevo = (Medicamento) extras.get("medicamento");
+                    int posicion = (int) extras.get("posicion");
                     medicamentos.remove(posicion);
-                    medicamentos.add(posicion, nuevo);
+                    fechaModificacion = Instant.now();
                     actualizarPantalla();
                     actualizarMedicamentosFirebase();
+                }
+                else if(resultCode == RESULT_OK) {
+                    Bundle extras = data.getExtras();
+                    Medicamento nuevo = (Medicamento) extras.get("medicamento");
+                    int posicion = (int) extras.get("posicion");
+                    if(nuevo!=null) {
+                        medicamentos.remove(posicion);
+                        medicamentos.add(posicion, nuevo);
+                        fechaModificacion = Instant.now();
+                        actualizarPantalla();
+                        actualizarMedicamentosFirebase();
+                    }
                 }
             }
         }

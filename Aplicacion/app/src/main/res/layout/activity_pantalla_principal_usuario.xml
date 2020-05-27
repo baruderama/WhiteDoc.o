@@ -102,6 +102,7 @@
                     android:backgroundTint="@color/colorTitles"
                     android:onClick="emergencia"
                     android:text="@string/btnEmergencia"
+                    android:textSize="40sp"
                     android:textColor="@color/colorLettersBtn" />
 
             </LinearLayout>

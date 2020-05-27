@@ -124,6 +124,7 @@
                 android:text="@string/btn_atenderEmergencias"
                 android:backgroundTint="@color/colorTitles"
                 android:textColor="@color/colorLettersBtn"
+                android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
