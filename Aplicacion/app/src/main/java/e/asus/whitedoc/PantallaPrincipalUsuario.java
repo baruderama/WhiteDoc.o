@@ -67,8 +67,8 @@ public class PantallaPrincipalUsuario extends AppCompatActivity {
                 .build();
 
         notificationManager.notify(1,notification);
-        Intent pantallaPersona = new Intent(getApplicationContext(), ConsultarCitasPersona.class);
-        startActivity(pantallaPersona);
+        Intent pantallaPaciente = new Intent(getApplicationContext(), ConsultarCitasPacienteActivity.class);
+        startActivity(pantallaPaciente);
     }
 
     public void modificarMedicamentos(View v) {

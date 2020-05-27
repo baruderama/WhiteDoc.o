@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -14,21 +13,34 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import model.Cita;
 
 public class DetalleCita extends AppCompatActivity {
     TextView descripcion;
-    TextView user;
+    TextView usuario;
     TextView fecha;
     DatabaseReference mRef;
     String correo;
+
+    String description;
+    String date;
+    String medico;
+
+    public DetalleCita(String medico, String description, String date) {
+        this.medico = medico;
+        this.description = description;
+        this.date = date;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_cita);
         descripcion= findViewById(R.id.descripcion);
-        user= findViewById(R.id.username);
+        usuario = findViewById(R.id.username);
         fecha= findViewById(R.id.fecha);
         correo= getIntent().getStringExtra("correo");
         mRef= FirebaseDatabase.getInstance().getReference("Citas");
@@ -40,7 +52,7 @@ public class DetalleCita extends AppCompatActivity {
                 //Toast.makeText(AceptarRechazarCitas.this, citica.getEmailUser(), Toast.LENGTH_LONG).show();
 
                 if(citica.getUsername().equals(correo)) {
-                    user.setText(citica.getEmailUser());
+                    usuario.setText(citica.getEmailUser());
                     descripcion.setText(citica.getDescription());
                     fecha.setText(citica.getDateFormat());
 
@@ -70,7 +82,33 @@ public class DetalleCita extends AppCompatActivity {
         });
     };
 
+    public String getCorreo() {
+        return correo;
+    }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getMedico() {
+        return medico;
+    }
+
+    public JSONObject toJSON() {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("Descripcion", this.getDescription());
+            obj.put("Fecha", this.getDate());
+            obj.put("Medico", this.getMedico());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return obj;
+    }
 
 
 }
