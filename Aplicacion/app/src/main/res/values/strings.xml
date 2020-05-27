@@ -111,4 +111,5 @@
     <string name="fecha">Fecha</string>
     <string name="hora">Hora</string>
     <string name="guardar_cambios">Guardar Cambios</string>
+    <string name="eliminar_medicamento">Eliminar medicamento</string>
 </resources>

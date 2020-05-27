@@ -1,4 +1,4 @@
-package e.asus.whitedoc.data.model;
+package model;
 
 import java.io.Serializable;
 import java.time.Instant;

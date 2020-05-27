@@ -1,6 +1,6 @@
 package e.asus.whitedoc.data;
 
-import e.asus.whitedoc.data.model.LoggedInUser;
+import model.LoggedInUser;
 
 /**
  * Class that requests authentication and user information from the remote data source and

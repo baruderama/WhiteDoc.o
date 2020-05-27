@@ -64,7 +64,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import e.asus.whitedoc.data.model.Lugar;
+import model.Lugar;
 import e.asus.whitedoc.helper.FetchURL;
 import e.asus.whitedoc.helper.TaskLoadedCallback;
 

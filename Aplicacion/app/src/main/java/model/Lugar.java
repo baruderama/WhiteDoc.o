@@ -1,4 +1,4 @@
-package e.asus.whitedoc.data.model;
+package model;
 
 import com.google.android.gms.maps.model.LatLng;
 

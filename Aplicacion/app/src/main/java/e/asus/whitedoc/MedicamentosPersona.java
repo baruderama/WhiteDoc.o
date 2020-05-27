@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,8 +32,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import e.asus.whitedoc.data.model.ListaMedicamentos;
-import e.asus.whitedoc.data.model.Medicamento;
+import e.asus.whitedoc.helper.Utils;
+import model.ListaMedicamentos;
+import model.Medicamento;
 
 public class MedicamentosPersona extends AppCompatActivity {
 
@@ -51,7 +53,7 @@ public class MedicamentosPersona extends AppCompatActivity {
         medicamentos = new ArrayList<>();
         fechaModificacion = null;
 
-        ListaMedicamentos guardadosLocalmente = obtenerMedicamentosArchivo();
+        ListaMedicamentos guardadosLocalmente = Utils.obtenerMedicamentosArchivo(getBaseContext());
         if(guardadosLocalmente != null) {
             medicamentos = guardadosLocalmente.getMedicamentos();
             fechaModificacion = guardadosLocalmente.getFechaActualizacion();
@@ -98,7 +100,7 @@ public class MedicamentosPersona extends AppCompatActivity {
                     }
                     medicamentos = nuevosMedicamentos;
                     fechaModificacion = ultimaModificacion;
-                    actualizarMedicamentosArchivo(new ListaMedicamentos(ultimaModificacion, nuevosMedicamentos));
+                    Utils.actualizarMedicamentosArchivo(new ListaMedicamentos(fechaModificacion, medicamentos), getBaseContext());
                 }
                 actualizarPantalla();
             }
@@ -108,15 +110,6 @@ public class MedicamentosPersona extends AppCompatActivity {
 
             }
         });
-    }
-
-    void actualizarMedicamentosArchivo(ListaMedicamentos medicamentos) {
-        //TODO Guardar los datos de los medicamentos en el archivo (lo sobreescribe) (No hace falta verificar que medicamentos es diferente de null)
-    }
-
-    ListaMedicamentos obtenerMedicamentosArchivo() {
-        //TODO leer medicamentos desde archivo (Revisar la clase para ver bien lo que debe tener el archivo) (Si no se encuentra archivo retornar null)
-        return null;
     }
 
     public void agregarMedicamento(View view) {

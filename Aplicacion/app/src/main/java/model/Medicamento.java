@@ -1,4 +1,7 @@
-package e.asus.whitedoc.data.model;
+package model;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -51,6 +54,19 @@ public class Medicamento implements Serializable {
 
     @Override
     public String toString() {
-        return nombre;
+        return nombre + " " + descripcion + " " + horario + " " + periodo;
+    }
+
+    public JSONObject toJSON () {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("nombre", getNombre());
+            obj.put("horario", getHorario());
+            obj.put("periodo", getPeriodo());
+            obj.put("descripcion", getDescripcion());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return obj;
     }
 }

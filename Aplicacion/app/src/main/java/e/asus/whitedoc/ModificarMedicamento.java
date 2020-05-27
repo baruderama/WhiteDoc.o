@@ -7,7 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -20,8 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.time.Instant;
 import java.util.Calendar;
 
-import e.asus.whitedoc.data.model.ListaMedicamentos;
-import e.asus.whitedoc.data.model.Medicamento;
+import model.Medicamento;
 
 public class ModificarMedicamento extends AppCompatActivity {
     private EditText editNombre;
@@ -190,4 +188,6 @@ public class ModificarMedicamento extends AppCompatActivity {
         return true;
     }
 
+    public void eliminarMedicamento(View view) {
+    }
 }

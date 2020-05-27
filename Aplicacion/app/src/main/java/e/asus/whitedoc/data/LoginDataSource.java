@@ -1,6 +1,6 @@
 package e.asus.whitedoc.data;
 
-import e.asus.whitedoc.data.model.LoggedInUser;
+import model.LoggedInUser;
 
 import java.io.IOException;
 

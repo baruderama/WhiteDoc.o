@@ -21,8 +21,8 @@ import android.widget.Toast;
 import java.time.Instant;
 import java.util.Calendar;
 
-import e.asus.whitedoc.data.model.ListaMedicamentos;
-import e.asus.whitedoc.data.model.Medicamento;
+import model.ListaMedicamentos;
+import model.Medicamento;
 
 public class AgregarMedicamento extends AppCompatActivity {
     private EditText editNombre;
