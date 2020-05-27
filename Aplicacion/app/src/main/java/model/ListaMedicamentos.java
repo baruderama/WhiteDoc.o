@@ -28,4 +28,12 @@ public class ListaMedicamentos implements Serializable {
     public void setMedicamentos(List<Medicamento> medicamentos) {
         this.medicamentos = medicamentos;
     }
+
+    public String toStringJSON() {
+        StringBuilder s = new StringBuilder(fechaActualizacion.toString());
+        for(Medicamento med: medicamentos) {
+            s.append("\\").append(med.toStringJSON());
+        }
+        return s.toString();
+    }
 }

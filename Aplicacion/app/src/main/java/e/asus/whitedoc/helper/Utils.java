@@ -34,13 +34,12 @@ public class Utils {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static ListaMedicamentos obtenerMedicamentosArchivo(Context baseContext) {
-        String[] jsongString = readFromFile(baseContext).split("\\s");
+        String[] jsongString = readFromFile(baseContext).split("\\\\");
         if(jsongString != null && jsongString.length > 4){
             List<Medicamento> auxMedicamentos = new ArrayList<>();
 
             for (int i = 1; i<jsongString.length; i+=4){
                 auxMedicamentos.add(new Medicamento(jsongString[i],jsongString[i+1],Instant.parse(jsongString[i+2]),Integer.valueOf(jsongString[i+3])));
-                Log.i("LOCATION", auxMedicamentos.get(i).toString() );
             }
             ListaMedicamentos medicamentosGuardados = new ListaMedicamentos(Instant.parse(jsongString[0]), auxMedicamentos);
             Log.i("LOCATION", jsongString[0] );
@@ -63,7 +62,7 @@ public class Utils {
             File file = new File(baseContext.getFilesDir(), filename);
             //Log.i(“LOCATION", "Ubicacion de archivo: "+file);
             output = new BufferedWriter(new FileWriter(file));
-            output.write( medicamentosLista.getFechaActualizacion().toString() + " " + medicamentosLista.getMedicamentos().toString());
+            output.write( medicamentosLista.toStringJSON());
             output.close();
         } catch (Exception e) {
             //Log error

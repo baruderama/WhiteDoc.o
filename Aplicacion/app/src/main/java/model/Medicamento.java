@@ -54,7 +54,11 @@ public class Medicamento implements Serializable {
 
     @Override
     public String toString() {
-        return nombre + " " + descripcion + " " + horario + " " + periodo;
+        return nombre + " (Cada " + periodo +" horas) ";
+    }
+
+    public String toStringJSON() {
+        return nombre + "\\" + descripcion + "\\" + horario + "\\" + periodo;
     }
 
     public JSONObject toJSON () {
