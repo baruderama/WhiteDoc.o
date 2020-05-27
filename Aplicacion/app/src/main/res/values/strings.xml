@@ -71,6 +71,19 @@
         <item>Paciente</item>
         <item>Médico</item>
     </string-array>
+
+    <string-array name="spinner_medicamento">
+        <item>Cada 4 horas</item>
+        <item>Cada 6 horas</item>
+        <item>Cada 8 horas</item>
+        <item>Cada 12 horas</item>
+        <item>Cada 24 horas</item>
+        <item>Cada 48 horas</item>
+        <item>Cada 72 horas</item>
+        <item>Una vez a la semana</item>
+        <item>Una vez cada 4 semanas</item>
+    </string-array>
+
     <string name="title_activity_emergencia_usuario">Map</string>
     <string name="continuar">CONTINUAR</string>
     <string name="cancelar">CANCELAR</string>
@@ -92,4 +105,6 @@
     <string name="acepta_rechaza_citas">Acepta o Rechaza Citas</string>
     <string name="titleMedCliente">Medicamentos</string>
     <string name="btnAdd">+</string>
+    <string name="txtPeriodoMed">Periodo:</string>
+    <string name="txtPDosisMed">Primera dosis:</string>
 </resources>

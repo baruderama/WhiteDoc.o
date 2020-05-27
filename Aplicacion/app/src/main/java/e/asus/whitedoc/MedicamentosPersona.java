@@ -1,13 +1,13 @@
 package e.asus.whitedoc;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,14 +22,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +51,7 @@ public class MedicamentosPersona extends AppCompatActivity {
         ListaMedicamentos guardadosLocalmente = obtenerMedicamentosArchivo();
         if(guardadosLocalmente != null) {
             medicamentos = guardadosLocalmente.getMedicamentos();
-            fechaModificacion = guardadosLocalmente.getFechaActualización();
+            fechaModificacion = guardadosLocalmente.getFechaActualizacion();
             actualizarPantalla();
         }
         crearListener();
@@ -70,8 +64,8 @@ public class MedicamentosPersona extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getBaseContext(), ModificarMedicamento.class);
-                intent.putExtra("medicamento", (Parcelable) medicamentos.get( (int) id));
-                startActivity(intent);
+                intent.putExtra("medicamento", medicamentos.get(position));
+                startActivityForResult(intent, 2);
             }
         });
     }
@@ -82,6 +76,9 @@ public class MedicamentosPersona extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.exists()) {
+                    return;
+                }
                 Instant ultimaModificacion = Instant.parse(Objects.requireNonNull(dataSnapshot.child("fecha").getValue()).toString());
                 if(fechaModificacion != null && fechaModificacion.isAfter(ultimaModificacion)) {
                     Map<String, Object> map = new HashMap<>();
@@ -134,7 +131,37 @@ public class MedicamentosPersona extends AppCompatActivity {
     }
 
     public void agregarMedicamento(View view) {
+        ListaMedicamentos info = new ListaMedicamentos(fechaModificacion, medicamentos);
         Intent pantallaAgregarMedicamento = new Intent(getApplicationContext(), AgregarMedicamento.class);
-        startActivity(pantallaAgregarMedicamento);
+        pantallaAgregarMedicamento.putExtra("medicamentos", info);
+        startActivityForResult(pantallaAgregarMedicamento, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data!=null) {
+            if(requestCode ==  1) { //Agregar medicamento
+                Bundle extras = data.getExtras();
+                Medicamento nuevo = (Medicamento) extras.get("medicamento");
+                if(nuevo!=null) {
+                    medicamentos.add(nuevo);
+                    actualizarPantalla();
+                }
+            }
+            else if(requestCode == 2){ // Modificar medicamento
+                Bundle extras = data.getExtras();
+                Medicamento nuevo = (Medicamento) extras.get("medicamento");
+                if(nuevo!=null) {
+                    for(Medicamento medicamento: medicamentos) {
+                        if(medicamento.getNombre().equals(nuevo.getNombre())) {
+                            medicamento = nuevo;
+                            break;
+                        }
+                    }
+                    actualizarPantalla();
+                }
+            }
+        }
     }
 }

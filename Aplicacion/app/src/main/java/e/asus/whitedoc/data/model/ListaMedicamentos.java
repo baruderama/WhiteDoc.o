@@ -1,24 +1,24 @@
 package e.asus.whitedoc.data.model;
 
+import java.io.Serializable;
 import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
-public class ListaMedicamentos {
-    Instant fechaActualización;
-    List<Medicamento> medicamentos;
+public class ListaMedicamentos implements Serializable {
+    private Instant fechaActualizacion;
+    private List<Medicamento> medicamentos;
 
-    public ListaMedicamentos(Instant fechaActualización, List<Medicamento> medicamentos) {
-        this.fechaActualización = fechaActualización;
+    public ListaMedicamentos(Instant fechaActualizacion, List<Medicamento> medicamentos) {
+        this.fechaActualizacion = fechaActualizacion;
         this.medicamentos = medicamentos;
     }
 
-    public Instant getFechaActualización() {
-        return fechaActualización;
+    public Instant getFechaActualizacion() {
+        return fechaActualizacion;
     }
 
-    public void setFechaActualización(Instant fechaActualización) {
-        this.fechaActualización = fechaActualización;
+    public void setFechaActualizacion(Instant fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public List<Medicamento> getMedicamentos() {
